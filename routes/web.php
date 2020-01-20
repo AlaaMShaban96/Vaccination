@@ -14,20 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/VaccinationCenters', function () {
-    return view('VaccinationCenters.index');
-});
-Route::get('/management', function () {
-    return view('VaccinationCenters.management');
-});
-Route::post('/postajax', function () {
-   
-    // $response = array(
-    //     'status' => 'success',
-    //     'msg' => $request->message,
-    // );
-    // return Response::json(Request::all());
-    //  return response()->json($request->all(),200); 
-    return "done";
-})->name('login');
-Route::post('/addchild', 'ChildController@store');
+Route::get('/VaccinationCenters','VaccinationController@show');
+Route::get('/send','VaccinationController@sendOrder');
+Route::get('/receive','VaccinationController@receiveOrder');
+
+Route::post('addchild', 'ChildController@store');
+Route::post('getchild/{id}', 'ChildController@show');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChildrenTable extends Migration
+class CreateVaccinationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateChildrenTable extends Migration
      */
     public function up()
     {
-        Schema::create('children', function (Blueprint $table) {
+        Schema::create('vaccinations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->bigInteger('vaccination_center_id')->default(0000);
-            $table->date('date_of_birth');
-            $table->string('home_adress');
-            $table->integer('telephone_number');
-            $table->boolean('status')->default(1);
+            $table->bigInteger('months_id');
             $table->timestamps();
+            // $table->foreign('months_id')->references('id')->on('months');
         });
     }
 
@@ -32,6 +29,6 @@ class CreateChildrenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('children');
+        Schema::dropIfExists('vaccinations');
     }
 }

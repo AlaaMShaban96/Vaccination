@@ -38,7 +38,7 @@ class ChildController extends Controller
         
         $validatedData = $request->validate([
             'name' => 'required',
-            // 'vaccination_center_id' => 'required',
+            'vaccination_center_id' => 'required',
             'date_of_birth' => 'required',
             'home_adress' => 'required',
             'telephone_number' => 'required',
@@ -47,6 +47,9 @@ class ChildController extends Controller
         //HTIS TEST
         $child = Child::firstOrCreate($validatedData);
         return response()->json($child, 200);
+        return response()->json([
+            'child'=>$child,
+        ], 200);
     }
 
     /**
@@ -56,8 +59,9 @@ class ChildController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    { 
+        $child = Child::find($id);
+        return response()->json($child, 200); 
     }
 
     /**

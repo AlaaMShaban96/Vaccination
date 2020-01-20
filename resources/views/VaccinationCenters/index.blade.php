@@ -1,7 +1,5 @@
 @extends('VaccinationCenters/master')
-@section('head')
-<meta name="csrf-token" content="{{ csrf_token() }}" />
-@endsection
+
 @section('body')
 
 
@@ -27,11 +25,13 @@
 
                     <!-- Card body -->
                     <div class="card-body">
-                
+                      <div id="done">
+                    
+                      </div>
                     <!-- Material form register -->
                     <form id="formRegister" action="#" >
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                      <input type="hidden" name="vaccination_center_id" value="12345678">
+                      <input type="hidden" id="vaccination_center_id" name="vaccination_center_id" value="12345678">
                       <!-- Material input text -->
                         <div class="md-form">
                             <label for="name" class="font-weight-light">اسم الطفل</label>
@@ -60,7 +60,9 @@
                 
                         <button type="submit" class="btn btn-primary" style="margin-top: 9%;width: 107px;" id="addChildren" >تسجيل</button>
                     </form>
-
+                    <div id="error">
+                    
+                    </div>
                     <!-- Material form register -->
                 
                     </div>
@@ -70,17 +72,19 @@
                 <!-- Card -->
             </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cleaning()">اغلاق</button>
           
         </div>
       </div>
     </div>
   </div>
 
-    <form action="" method="post">
-        <img src="{{asset('image/2682157.jpg')}}" style="width: 20%;margin-left: 38%;margin-top: 3%;">
-        <input type="text" class="form-control"  placeholder="رقم الطفل" style="width: 30%;margin-right: 37%;margin-top: 2%;">
-        <button type="button" class="btn btn-success" style="margin-left: 46%;">Success</button>
+    {{-- <img src="{{asset('image/2682157.jpg')}}" style="width: 20%;margin-left: 38%;margin-top: 3%;"> --}}
+
+    <form id="getchilde" action="#">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <input type="text" class="form-control" id="childeId" placeholder="رقم الطفل" style="width: 30%;margin-right: 37%;margin-top: 2%;">
+      <button type="button" class="btn btn-success" style="margin-right: 37%;" id="search">بحت</button>
     </form>
 
 
@@ -89,14 +93,14 @@
         <div class="row">
             <div class="col">
 
-                <div class="card" style="width: 18rem;">
+                <div class="card" style="width: 18rem;" id="baby-info">
                     <img class="card-img-top " src="{{asset('image/babe.jpg')}}" alt="Card image cap"
                          style="width: 59%;margin-right: 20%;">
                     <div class="card-body">
                   
-                    <h5><span class="badge badge-success">عبد الله عبد الصمد عبد القادر</span></h5>
-                    <h5><span class="badge badge-success">عين زارة</span></h5>
-                    <h5><span class="badge badge-success">0927780208</span></h5>
+                    <h5><span class="badge badge-success" id="span-name">عبد الله عبد الصمد عبد القادر</span></h5>
+                    <h5><span class="badge badge-success" id="span-home_adress">عين زارة</span></h5>
+                    <h5><span class="badge badge-success" id="span-telephone_number">0927780208</span></h5>
                     <a href="#" class="btn btn-primary">المزيد</a>
                     </div>
                 </div>
@@ -146,42 +150,6 @@
                     <td>اربعه اشهر</td>
                     <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
                   </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Pvc</td>
-                    <td>اربعه اشهر</td>
-                    <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Pvc</td>
-                    <td>اربعه اشهر</td>
-                    <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Pvc</td>
-                    <td>اربعه اشهر</td>
-                    <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Pvc</td>
-                    <td>اربعه اشهر</td>
-                    <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Pvc</td>
-                    <td>اربعه اشهر</td>
-                    <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Pvc</td>
-                    <td>اربعه اشهر</td>
-                    <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-                  </tr>
                   
                 </tbody>
               </table>
@@ -193,94 +161,6 @@
   
 @endsection
 @section('script')
-  
-    <script  type="text/javascript">
-      $.ajaxSetup({
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-      });
-
-  //  $(document).ready(function(){
-
-     $('#addChildren').click(function(){
-     
-          var name =$('#name').val();
-          var date_of_birth =$('#date_of_birth').val();
-          var home_adress =$('#home_adress').val();
-          var telephone_number =$('#telephone_number').val();
-          var vaccination_center_id =$('#vaccination_center_id').val();
-
-          var data="name="+name+"&date_of_birth="+date_of_birth
-                    +"&home_adress="+home_adress+"&telephone_number="+telephone_number
-                    +"&vaccination_center_id="+vaccination_center_id;
-        $.ajax({
-          type:'POST',
-          url:'/addchild',
-          data:data,
-          success:function(data){
-            Swal.fire(
-                'تم اضافة الطفل بنجاح',
-                ' رقم الطفل هو '+data.id,
-                
-              )
-              document.getElementById('name').value ="";
-              document.getElementById('date_of_birth').value ="";
-              document.getElementById('home_adress').value ="";
-              document.getElementById('telephone_number').value ="";
-
-            },
-            error:function(data){
-              var obj = JSON.parse(data.responseText);
-              var message="تاكد من ادخال ";
-                if(obj.errors.hasOwnProperty('name'))
-                  message+= "- اسم الطفل"
-                if(obj.errors.hasOwnProperty('date_of_birth'))
-                  message+= "- تاريخ الميلاد";
-                if(obj.errors.hasOwnProperty('telephone_number'))
-                  message+= "- رقم ولي الامر";
-                if(obj.errors.hasOwnProperty('home_adress'))
-                  message+= "- عنوان السكن";
-
-                  console.log(message);
-              Swal.fire({
-                icon: 'error',
-                title: 'خطاء في الادخال',
-                text: ''+message,
-                
-              })
-              
-
-          
-
-            
-
-            //  obj.forEach(el => {
-            //     console.log(el);
-            //   });
-              
-
-            
-            }
-
-          });
-        });
-
-    $('body').on('keydown', 'input, select', function(e) {
-    if (e.key === "Enter") {
-        var self = $(this), form = self.parents('form:eq(0)'), focusable, next;
-        focusable = form.find('input,a,select,button,textarea').filter(':visible');
-        next = focusable.eq(focusable.index(this)+1);
-        if (next.length) {
-            next.focus();
-        } else {
-            form.submit();
-        }
-        return false;
-    }
-});
-    // });
-
-
-    </script>
+{{--    --}}
+    <script src="{{asset('js/index.js')}}"></script>
 @endsection
