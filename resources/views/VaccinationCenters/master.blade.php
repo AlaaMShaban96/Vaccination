@@ -15,7 +15,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> --}}
 <meta name="csrf-token" content="{{ csrf_token() }}" />
-
+<link href='https://fonts.googleapis.com/css?family=Tajawal' rel='stylesheet'>
 @yield('head')
 <link rel="stylesheet" href="{{asset('css/master.css')}}">
 <style>
@@ -63,7 +63,7 @@
         </div> <!-- /#page-content-wrapper -->
     </div> <!-- /#wrapper -->
     <!-- Bootstrap core JavaScript -->
-    @yield('script')
+   
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script> <!-- Menu Toggle Script -->
     <script>
@@ -82,9 +82,10 @@
           }
         });
       });
-       
+
+        
     </script>
 
-
+@yield('script')
 </body>
 </html>

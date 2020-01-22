@@ -15,9 +15,11 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('vaccination_id')->nullable();
             $table->string('name');
             $table->string('dose_time'); 
             $table->Integer('quantity');
+            $table->smallInteger('status')->default(1);
             $table->bigInteger('user_id')->nullable();
             $table->timestamps();
         });

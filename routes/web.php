@@ -15,8 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/VaccinationCenters','VaccinationController@show');
-Route::get('/send','VaccinationController@sendOrder');
-Route::get('/receive','VaccinationController@receiveOrder');
+Route::get('/send','OrderController@sendOrder');
+Route::get('/receive','OrderController@receiveOrder');
 
-Route::post('addchild', 'ChildController@store');
-Route::post('getchild/{id}', 'ChildController@show');
+Route::post('/addchild', 'ChildController@store');
+Route::post('/getchild/{id}', 'ChildController@show');
+Route::post('/addorder', 'OrderController@store');
+

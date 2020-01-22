@@ -12,41 +12,17 @@
     </thead>
     <tbody>
       <tr>
-        <th scope="row">1</th>
-        <form action="" method="post">
-            <td>PVC</td>
-            <td>10</td>
-            <td><button type="submit" class="btn btn-success">تم الاستلام</button></td>
-        </form>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <form action="" method="post">
-            <td>PVC</td>
-            <td>10</td>
-            <td><button type="submit" class="btn btn-success">تم الاستلام</button></td>
-        </form>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <form action="" method="post">
-            <td>PVC</td>
-            <td>10</td>
-            <td><button type="submit" class="btn btn-success">تم الاستلام</button></td>
-        </form>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <form action="" method="post">
-            <td>PVC</td>
-            <td>10</td>
-            <td><button type="submit" class="btn btn-success">تم الاستلام</button></td>
-        </form>
+        @foreach ($orders as $order)
+         <th scope="row">{{$order->id}}</th>
+          <td>{{$order->name}}</td>
+          <td>{{$order->quantity}}</td>
+          <td><button type="submit" class="btn btn-success">تم الاستلام</button></td>
+        @endforeach
       </tr>
       
     </tbody>
   </table>
-
+  {{$orders->links()}}
     
 @endsection
 

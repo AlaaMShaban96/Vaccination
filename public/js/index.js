@@ -17,7 +17,7 @@ $('#baby-info').hide();
             document.getElementById('span-telephone_number').innerHTML=data.child.telephone_number;
           },
          
-
+ 
         });
 
       });
