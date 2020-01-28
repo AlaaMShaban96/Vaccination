@@ -14,11 +14,26 @@ class CreateAvailableVaccinationsTable extends Migration
     public function up()
     { 
         Schema::create('available_vaccinations', function (Blueprint $table) {
+            
+            
             $table->bigIncrements('id');
-            $table->bigInteger('vaccination_id');
-            $table->Integer('quantity');
+            $table->bigInteger('vaccination_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
+            $table->Integer('quantity')->unsigned()->nullable();
+
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('cascade');
+                  
+            $table->foreign('vaccination_id')
+                  ->references('id')
+                  ->on('vaccinations')
+                  ->onDelete('cascade');
+
             $table->timestamps();
         });
+
     }
 
     /**

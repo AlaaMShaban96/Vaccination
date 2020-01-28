@@ -48,11 +48,10 @@
                 <li> <a href="{{url('/VaccinationCenters')}}">لوحة التحكم</a> </li>
                 <li> <a href="{{url('/send')}}">ارسال طلب</a> </li>
                 <li> <a href="{{url('/receive')}}">استلام شحنة</a> </li>
-                <li> <a href="#">الاطفال</a> </li>
+                <li> <a href="{{url('/my-vaccination-available')}}"> التطعيمات </a> </li>
+                <li> <a href="{{url('/infochildren')}}">الاطفال</a> </li>
                 <li> <a href="#">تقرير</a> </li>
-                <li> <a href="#">About</a> </li>
-                <li> <a href="#">Services</a> </li>
-                <li> <a href="#">Contact</a> </li>
+              
             </ul>
         </div> <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
@@ -67,7 +66,9 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script> <!-- Menu Toggle Script -->
     <script>
-        
+       
+
+
       $(function(){
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
@@ -85,6 +86,7 @@
 
         
     </script>
+    
 
 @yield('script')
 </body>

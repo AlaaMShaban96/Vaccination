@@ -16,10 +16,10 @@ class CreateChildrenTable extends Migration
         Schema::create('children', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->bigInteger('vaccination_center_id')->default(0000);
+            $table->bigInteger('user_id')->default(0000);
             $table->date('date_of_birth');
             $table->string('home_adress');
-            $table->integer('telephone_number');
+            $table->bigInteger('telephone_number');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });

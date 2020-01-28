@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Child extends Model
 {
-    //"vaccination_center_id",
+    //"user_id",
     protected $fillable=[
-        "name","date_of_birth","home_adress","telephone_number","vaccination_center_id"
+       "id", "name","date_of_birth","home_adress","telephone_number","user_id"
     ];
+    public function childfiles()
+    {
+        return $this->hasMany(Childfile::class);
+    }
 }

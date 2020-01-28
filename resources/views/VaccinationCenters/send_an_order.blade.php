@@ -20,12 +20,12 @@
                   <tr>
                     <input type="hidden" name="{{$index= $vaccination->id}}">
                     
-                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                      {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
                         <th id="vaccination_id{{$index}}">{{$vaccination->id}}</th>
                         <td id="name{{$index}}">{{$vaccination->name}}</td>
                         <td id="dose_time{{$index}}">{{$vaccination->dose_time}}</td>
                         <td><input id="quantity{{$index}}" type="number" aria-label="Checkbox for following text input"></td>
-                        <td><input type="submit" value="Get Selected" onclick="send({{$index}})" /></td>                         
+                        <td><input type="submit" class="btn btn-success" value="ارسل الطلب" onclick="send({{$index}})" /></td>                         
                     </tr>
                       
                   @endforeach

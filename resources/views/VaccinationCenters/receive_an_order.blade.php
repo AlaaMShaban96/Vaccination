@@ -4,25 +4,48 @@
 <table class="table table-dark">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">رقم الطلب</th>
         <th scope="col">اسم الجرعة</th>
+        <th scope="col">موعد الجرعة</th>
         <th scope="col">كمية الجرعات</th>
         <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+      
         @foreach ($orders as $order)
-         <th scope="row">{{$order->id}}</th>
-          <td>{{$order->name}}</td>
-          <td>{{$order->quantity}}</td>
-          <td><button type="submit" class="btn btn-success">تم الاستلام</button></td>
-        @endforeach
-      </tr>
+        <form action="/accept-order/{{$order->id}}" method="post">
+          @csrf
+            <tr>
+            <th scope="row">{{$order->id}}</th>
+              <td>{{$order->name}}</td>
+              <td>{{$order->dose_time}}</td>
+              <td>{{$order->quantity}}</td>
+              <td><button type="submit" class="btn btn-success" >تأكيد</button></td>
+            </tr>
+        </form>
+          @endforeach
+     
       
     </tbody>
   </table>
   {{$orders->links()}}
+    <br>
+    @if ($errors->any())
+     <div class="alert alert-danger" role="alert" id="#errur" >
+      okkkk
+      </div> 
+     @endif
+     @if (session()->has('message'))
+       <div class="alert alert-success" role="alert" id="succsful" >
+        {{session()->get('message')}}
+       </div>  
+     @endif
+       
     
+   
+   
 @endsection
-
+@section('script')
+  <script src="{{asset('js/receive_an_order.js')}}"></script>    
+@endsection

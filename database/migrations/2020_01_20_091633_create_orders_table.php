@@ -14,15 +14,29 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
+            
             $table->bigIncrements('id');
-            $table->bigInteger('vaccination_id')->nullable();
+            $table->bigInteger('vaccination_id')->unsigned()->default(1);
             $table->string('name');
             $table->string('dose_time'); 
-            $table->Integer('quantity');
+            $table->Integer('quantity')->unsigned()->nullable();
             $table->smallInteger('status')->default(1);
-            $table->bigInteger('user_id')->nullable();
+            $table->bigInteger('user_id')->unsigned()->nullable();
+
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('cascade');
+
+            $table->foreign('vaccination_id')
+                  ->references('id')
+                  ->on('vaccinations')
+                  ->onDelete('cascade');
+
             $table->timestamps();
         });
+
+        
     }
 
     /**

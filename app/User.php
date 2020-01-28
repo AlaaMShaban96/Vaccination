@@ -40,6 +40,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
-
+    // public function vaccinations()
+    // {
+    //     return $this->belongsToMany(Vaccination::class, 'user_vaccination');
+    // }
    
 }
+
