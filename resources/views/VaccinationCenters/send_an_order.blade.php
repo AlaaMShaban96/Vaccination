@@ -24,7 +24,7 @@
                         <th id="vaccination_id{{$index}}">{{$vaccination->id}}</th>
                         <td id="name{{$index}}">{{$vaccination->name}}</td>
                         <td id="dose_time{{$index}}">{{$vaccination->dose_time}}</td>
-                        <td><input id="quantity{{$index}}" type="number" aria-label="Checkbox for following text input"></td>
+                        <td><input id="quantity{{$index}}" class="quantity" type="number" aria-label="Checkbox for following text input"></td>
                         <td><input type="submit" class="btn btn-success" value="ارسل الطلب" onclick="send({{$index}})" /></td>                         
                     </tr>
                       

@@ -66,7 +66,7 @@
                       <!-- Material input text -->
                         <div class="md-form">
                             <label for="name" class="font-weight-light">اسم الطفل</label>
-                            <input type="text" id="name" class="form-control" >
+                            <input type="text" id="name" class="form-control" onkeydown="return alphaOnly(event);" >
                         
                         </div>
                 
@@ -74,11 +74,11 @@
                         <div class="md-form">
                         <i class="fa fa-envelope prefix grey-text"></i>  
                         <label for="date_of_birth" class="font-weight-light">مواليد الطفل</label>
-                        <input type="Date" id="date_of_birth" class="form-control" >
+                        <input type="Date" id="date_of_birth" class="form-control"  >
                       
                         </div>
                         <div class="md-form">
-                            <label for="home_adress" class="font-weight-light">عنوان السكن</label>
+                            <label for="home_adress" class="font-weight-light" onkeydown="return alphaOnly(event);" >عنوان السكن</label>
                             <input type="text" id="home_adress" class="form-control" >
                         
                         </div>

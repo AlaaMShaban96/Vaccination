@@ -26,4 +26,9 @@ class VaccinationController extends Controller
         return view('VaccinationCenters.vaccinationAvailable' ,compact('vaccinations'));
 
     }
+    public function show_reports()
+    {
+        return view('VaccinationCenters.reports' );
+
+    }
 }

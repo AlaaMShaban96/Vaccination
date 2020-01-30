@@ -27,7 +27,7 @@ class OrderController extends Controller
             'vaccination_id' => 'required',
             'name' => 'required',
             'dose_time' => 'required',
-            'quantity' => 'required',
+            'quantity' => 'required |numeric|min:1|not_in:0 ',
            
         ]);
       

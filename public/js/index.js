@@ -5,15 +5,44 @@ $.ajaxSetup({
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
 });
-      
+
+
+//this for deny enter any letters just number
+$('#childeId').keyup(function () { 
+  this.value = this.value.replace(/[^0-9\.]/g,'');
+});
+$('#telephone_number').keyup(function () { 
+  this.value = this.value.replace(/[^0-9\.]/g,'');
+});
+
+//this for deny enter any number just letters
+function alphaOnly(event) {
+  var key = event.keyCode;
+  return ((key >= 65 && key <= 90) || key == 8);
+};
+
 
 $('#search').click(function () {
    var id =$('#childeId').val();
-   $.ajax({
+   var data = "id="+id;
+ if (id == "") {
+  $('#baby-info').hide();
+  $('#vaccination_table').empty();
+  $("#errur").show();
+
+  document.getElementById('errur').innerHTML='تأكد من ادخال رقم الطفل';
+  setTimeout(function() {
+    $('#errur').fadeOut('fast');
+}, 2000);
+
+ }else{
+
+  $.ajax({
     type:'POST',
     url:'/getchild/'+id,
+    data:data,
     success:function(data){
-      // console.log(data);
+     
       $('#baby-info').show();
 
 
@@ -41,6 +70,8 @@ $('#search').click(function () {
       $('#vaccination_table').append(content);
     },
     error:function(data){
+      var obj = JSON.parse(data.responseText);
+      console.log(obj)
       $('#baby-info').hide();
       $('#vaccination_table').empty();
       if (data.status==404) {
@@ -56,6 +87,8 @@ $('#search').click(function () {
 
   });
 
+ }
+  
 });
 
 function take_a_dose(idv) {

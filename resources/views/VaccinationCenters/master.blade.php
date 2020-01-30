@@ -45,12 +45,12 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand"> <a href="#"> Start Bootstrap </a> </li>
-                <li> <a href="{{url('/VaccinationCenters')}}">لوحة التحكم</a> </li>
+                <li> <a href="{{url('/vaccinationCenters')}}">لوحة التحكم</a> </li>
                 <li> <a href="{{url('/send')}}">ارسال طلب</a> </li>
                 <li> <a href="{{url('/receive')}}">استلام شحنة</a> </li>
                 <li> <a href="{{url('/my-vaccination-available')}}"> التطعيمات </a> </li>
                 <li> <a href="{{url('/infochildren')}}">الاطفال</a> </li>
-                <li> <a href="#">تقرير</a> </li>
+                <li> <a href="{{url('/reports')}}">تقرير</a> </li>
               
             </ul>
         </div> <!-- /#sidebar-wrapper -->

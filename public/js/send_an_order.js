@@ -6,7 +6,9 @@ $('#baby-info').hide();
       });
       $("#succsful").hide();
       $("#errur").hide();
-
+      $('.quantity').keyup(function () { 
+        this.value = this.value.replace(/[^0-9\.]/g,'');
+      });
   
       function send(id) { 
         console.log(id);
@@ -36,9 +38,11 @@ $('#baby-info').hide();
                                     var obj = JSON.parse(data.responseText);
                                     var message="تاكد من ادخال ";
                                    
+                                    console.log(obj);
                                      if (obj.hasOwnProperty('errors')) {
                                         if(obj.errors.hasOwnProperty('quantity'))
-                                          message+= "-كمية الشحنة";
+                                          message+= "الكمية الشحنة و تأكد ان تكون قيمة اكبر من 0";
+                                    
                                      
                                         document.getElementById('errur').innerHTML=message;
                                         $("#errur").show();

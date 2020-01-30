@@ -29,10 +29,16 @@ class ChildController extends Controller
     }
 
     
-    public function show($id)
+    public function show(Request $request)
     { 
+      
+      
+        $validatedData = $request->validate([
+            'id' => 'required',
+         
+        ]);
         
-        $child = Child::findOrFail($id);
+        $child = Child::findOrFail($validatedData['id']);
         
         
         $collection =AvailableVaccinations::where('user_id','=',5)->get();
@@ -85,7 +91,7 @@ class ChildController extends Controller
         foreach ($childfiles as $childfile) {
 
             array_push($index,$childfile->vaccination_id);
-            // array_push($only,$childfile->vaccination_id);
+           
 
         }
         sort($index);

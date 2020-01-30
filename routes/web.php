@@ -14,7 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/VaccinationCenters','VaccinationController@show');
+Route::get('/vaccinationCenters','VaccinationController@show');
+Route::get('/reports','VaccinationController@show_reports');
 Route::get('/my-vaccination-available','VaccinationController@showVaccinationAvailable');
 
 

@@ -4,6 +4,16 @@
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
       });
+//this for deny enter any letters just number
+$('#telephone_number').keyup(function () { 
+      this.value = this.value.replace(/[^0-9\.]/g,'');
+      });
+
+//this for deny enter any number just letters
+function alphaOnly(event) {
+      var key = event.keyCode;
+      return ((key >= 65 && key <= 90) || key == 8);
+};
 function show_for_edit(id) {
 
       var id =document.getElementById("id"+id).innerHTML;

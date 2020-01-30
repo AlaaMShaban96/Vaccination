@@ -65,7 +65,7 @@
             <!-- Material input text -->
               <div class="md-form">
                   <label for="name" class="font-weight-light">اسم الطفل</label>
-                  <input type="text" id="name" class="form-control" >
+                  <input type="text" id="name" class="form-control " onkeydown="return alphaOnly(event);">
               
               </div>
       
@@ -78,7 +78,7 @@
               </div>
               <div class="md-form">
                   <label for="home_adress" class="font-weight-light">عنوان السكن</label>
-                  <input type="text" id="home_adress" class="form-control" >
+                  <input type="text" id="home_adress" class="form-control" onkeydown="return alphaOnly(event);" >
               
               </div>
               <div class="md-form">
