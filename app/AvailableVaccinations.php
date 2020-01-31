@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class AvailableVaccinations extends Model
@@ -16,4 +17,11 @@ class AvailableVaccinations extends Model
     {
         return $this->belongsTo(Vaccination::class);
     }
+    // public function users()
+    // {
+       
+    //         return $this->hasMany(User::class);
+        
+    // }
+   
 }

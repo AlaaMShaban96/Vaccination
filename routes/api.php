@@ -13,6 +13,22 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+ 
+
+
+Route::get('/news','Api\OrderController@index');//all vaccination
+
+Route::get('/vaccination','Api\VaccinationController@index');//all vaccination
+
+Route::get('/user','Api\UserController@index');//all vaccination
+
+Route::get('/city','Api\CityController@index');//all city
+
+Route::get('/city/{id}','Api\CityController@show');//user on this city
+
+Route::get('/user/{id}','Api\UserController@show');// user with vaccination
+
+Route::get('/vaccination/{id}','Api\VaccinationController@showUser');// all user have vaccination

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\AvailableVaccinations;
 
 class ChildController extends Controller
-{
+{ 
    
    
     public function store(Request $request)
@@ -86,7 +86,7 @@ class ChildController extends Controller
        $child= Child::find($id);
         $childfiles=Childfile::where('child_id','=',$id)->get();
          $index[0]="";
-         $only=[];
+         
 
         foreach ($childfiles as $childfile) {
 
@@ -98,6 +98,16 @@ class ChildController extends Controller
         $exceptVaccinations=Vaccination::whereIn('id',$index)->paginate(2);
       
         $onlyVaccinations = Vaccination::whereNotIn('id',$index)->paginate(2);
+
+        // $data=[
+
+        //     'child'=>$child,
+        //     'exceptVaccinations'=>$exceptVaccinations,
+        //     'onlyVaccinations'=>$onlyVaccinations
+
+        // ];
+
+
 
         return view('VaccinationCenters.infochild' ,compact('exceptVaccinations','onlyVaccinations','child'));
     }

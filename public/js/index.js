@@ -106,7 +106,7 @@ function take_a_dose(idv) {
       document.getElementById("take-"+idv).innerHTML="<span class='badge badge-pill badge-success'>تم اخد التطعيمة   </span>";
     }
   });
-  
+   
 }
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Order;
 use App\Vaccination;
 use Illuminate\Http\Request;
@@ -49,6 +50,7 @@ class OrderController extends Controller
        $order->status=3;
        $order->save();
  
+       User::find(5)->vaccinations()->save(Vaccination::find($order->vaccination_id));
       $availableVaccination= AvailableVaccinations::firstOrCreate([
            'user_id'=> $order->user_id,
            'vaccination_id'=> $order->vaccination_id,
