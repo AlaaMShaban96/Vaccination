@@ -10,12 +10,9 @@ $('#telephone_number').keyup(function () {
       });
 
 //this for deny enter any number just letters
-function alphaOnly(event) {
-      var key = event.keyCode;
-      return ((key >= 65 && key <= 90) || key == 8);
-};
-function show_for_edit(id) {
 
+function show_for_edit(id) {
+      document.getElementById('error').innerHTML="";
       var id =document.getElementById("id"+id).innerHTML;
       var name =document.getElementById("name"+id).innerHTML;
       var date_of_birth =document.getElementById("date_of_birth"+id).innerHTML;
@@ -66,7 +63,7 @@ function edit() {
               if(obj.errors.hasOwnProperty('date_of_birth'))
               message+= "- تاريخ الميلاد";
             if(obj.errors.hasOwnProperty('telephone_number'))
-              message+= "- رقم ولي الامر";
+              message+= "-  رقم ولي الامر ويكون حجمة 10  ارقام ويكون رقم وجب";
             if(obj.errors.hasOwnProperty('home_adress'))
               message+= "- عنوان السكن";
             if(obj.errors.hasOwnProperty('name'))

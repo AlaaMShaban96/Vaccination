@@ -51,24 +51,30 @@ class LoginController extends Controller
             'email' => 'email|required',
             'password' => 'required'
         ]);
-    
-        if(!auth()->attempt($loginData)) {
+  $user=  User::where('email','=',$loginData['email'])->first();
+        if ($user->status == 2) {
+            return redirect()->back()->withErrors(['المركز خارج الخدمة مؤقتا']);
+        }else {
            
-            return redirect()->back()->withErrors([' البريد الاكتروني غير صحيحة ','او',' كلمة السر غير صحيحة']);
-            // Redirect::back()->withErrors();
-            // return response(['message'=>'Invalid credentials'],401);User::where('email',$loginData['email'])->where('password',$loginData['password'])->get()
-        }
-        // dd('sucssful',auth()->user());
-        switch (auth()->user()->account_type) {
-            case 1:
-                return redirect('/index');
-                break;
-            case 2:
-              return redirect('/user/index');
-                break;
             
-          
-        }
+                if(!auth()->attempt($loginData)) {
+                
+                    return redirect()->back()->withErrors([' البريد الاكتروني غير صحيحة ','او',' كلمة السر غير صحيحة']);
+                    // Redirect::back()->withErrors();
+                    // return response(['message'=>'Invalid credentials'],401);User::where('email',$loginData['email'])->where('password',$loginData['password'])->get()
+                }
+                // dd('sucssful',auth()->user());
+                switch (auth()->user()->account_type) {
+                    case 1:
+                        return redirect('/admin/index');
+                        break;
+                    case 2:
+                    return redirect('/user/index');
+                        break;
+                    
+                
+                }
+            }
         // return (new UserResource( auth()->user()))->response()->setStatusCode(200);
     }
     public function logout(Request $request)

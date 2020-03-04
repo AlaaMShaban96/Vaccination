@@ -27,9 +27,9 @@
                 </button>
               </td>
               <td>
-                <button type="button" class="btn btn-danger"  data-toggle="modal" onclick="chick_pefor_delete({{$child->id}})" data-target="#delete_Child-id">
+                {{-- <button type="button" class="btn btn-danger"  data-toggle="modal" onclick="chick_pefor_delete({{$child->id}})" data-target="#delete_Child-id">
                 حذف
-                </button>
+                </button> --}}
               </td>
               <td>
               <a href="/infochild?id={{$child->id}}" class="btn btn-primary" > عرض</a>
@@ -61,14 +61,14 @@
           
             </div>
           <!-- Material form register -->
-          <input type="hidden" id="user_id" name="user_id" value="12345678">
+        
 
          
             <input type="hidden" id="id" name="id">
             <!-- Material input text -->
               <div class="md-form">
                   <label for="name" class="font-weight-light">اسم الطفل</label>
-                  <input type="text" id="name" class="form-control " onkeydown="return alphaOnly(event);">
+                  <input type="text" id="name" class="form-control " >
               
               </div>
       

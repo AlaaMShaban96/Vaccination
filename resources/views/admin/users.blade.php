@@ -1,17 +1,19 @@
 @extends('admin/master')
 @section('content')
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#add"> إضافة حساب جديد +</button>
 
 <table class="table">
   <thead class="thead-dark">
     <tr>
       <th scope="col">الإسم</th>
       <th scope="col">إسم المستخدم</th>
-      <th scope="col">كلمة المرور</th>
+     
       <th scope="col">نوع الحساب</th>
       <th scope="col">رقم الهاتف</th>
       <th scope="col">العنوان</th>
       <th scope="col">حالة الحساب</th>
-      <th><button type="button" class="btn btn-success" data-toggle="modal" data-target="#add"> إضافة حساب جديد +</button></th>
+      <th></th>
+     
     </tr>
   </thead>
   <tbody>
@@ -20,7 +22,7 @@
     <tr>
     <td id="name{{$user->id}}">{{$user->name}}</td>
     <td id="email{{$user->id}}">{{$user->email}}</td>
-    <td id="password{{$user->id}}">{{$user->password}}</td>
+    {{-- <td id="password{{$user->id}}">{{$user->password}}</td> --}}
     <td id="account_type{{$user->id}}">{{$user->account_type === 1 ? "مدير نظام" : "مركز صحي"}}</td>
     <td id="phone_number{{$user->id}}">{{$user->phone_number}}</td>
     <td id="city_name{{$user->id}}">{{$user->city->name}}</td>

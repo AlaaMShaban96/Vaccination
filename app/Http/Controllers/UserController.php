@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index() 
     {
-        $users = User::all();
+        $users = User::orderBy('name')->get();//->paginate(10);; 
         $cities = City::all();
         return view('admin/users',compact('users','cities'));
 
@@ -142,7 +142,7 @@ class UserController extends Controller
         }elseif (Hash::check( $request->password, auth()->user()->password)) {
             
          
-
+ 
              auth()->user()->phone_number= $request->phone_number;
              auth()->user()->password= Hash::make($request->resetPassword);
              auth()->user()->save();

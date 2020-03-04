@@ -39,5 +39,5 @@
 
     
 
-<img src="image/t.jpg" width="80%">
+<img src="{{asset('image/t.jpg')}}" width="80%">
 @endsection

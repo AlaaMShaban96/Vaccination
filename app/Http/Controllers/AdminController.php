@@ -13,6 +13,7 @@ class AdminController extends Controller
 
     public function index() 
     {
+        
         $orders = Order::where('status','=',1)->get();
         $users = User::where('account_type','=',2)->get();
         $vaccinations = Vaccination::all();

@@ -29,7 +29,10 @@
     <nav class="navbar navbar-expand navbar-dark bg-primary"> <a href="#menu-toggle" id="menu-toggle" class="navbar-brand"><span class="navbar-toggler-icon"></span></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
         <div class="collapse navbar-collapse" id="navbarsExample02">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active" style="color:white;"> {{auth()->user()->name}} </li>
+                <li class="nav-item active" style="color:white;">
+                  مركز {{auth()->user()->name}} 
+                </li>
+                
                 {{-- <li class="nav-item"> <a class="nav-link" href="#">Link</a> </li> --}}
             </ul>
             <form class="form-inline my-2 my-md-0"> </form>
@@ -39,16 +42,16 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper"> 
             <ul class="sidebar-nav">
-                <li > <a href="{{ url("/user-profile") }}"> حسابي </a> </li>
-                <li> <a href="{{url('/user/index')}}">لوحة التحكم</a> </li>
-                <li> <a href="{{url('/send')}}">ارسال طلب</a> </li>
-                <li> <a href="{{url('/orders')}}"> طلبات المرسلة</a> </li>
-                <li> <a href="{{url('/receive')}}">استلام شحنة</a> </li>
-                <li> <a href="{{url('/my-vaccination-available')}}"> التطعيمات </a> </li>
-                <li> <a href="{{url('/infochildren')}}">الاطفال</a> </li>
+                <li > <a href="{{ url("/user-profile") }}"><i class="far fa-user-circle"></i> حسابي </a> </li>
+                <li> <a href="{{url('/user/index')}}"><i style='font-size:24px' class='fas'>&#xf292;</i>لوحة التحكم</a> </li>
+                <li> <a href="{{url('/send')}}"><i style='font-size:24px' class='far'>&#xf0e0;</i> ارسال طلب</a> </li>
+                <li> <a href="{{url('/orders')}}"><i style='font-size:24px' class='far'>&#xf1d8;</i> طلبات المرسلة</a> </li>
+                <li> <a href="{{url('/receive')}}"><i style='font-size:24px' class='fas'>&#xf01c;</i>  استلام شحنة</a> </li>
+                <li> <a href="{{url('/my-vaccination-available')}}"><i style='font-size:24px' class='fas'>&#xf48e;</i> التطعيمات </a> </li>
+                <li> <a href="{{url('/infochildren')}}"><i style='font-size:24px' class='fas'>&#xf77c;</i>الاطفال</a> </li>
                 {{--  <a href="{{url('/reports')}}">تقرير</a> </li> --}}
                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
-               تسجيل الخروج
+                  <i style='font-size:24px' class='fas'>&#xf011;</i> تسجيل الخروج
               </a> </li>   
               <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                   {{ csrf_field() }}
@@ -57,7 +60,7 @@
             </ul>
         </div> <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
-        <div id="page-content-wrapper">
+        <div id="page-content-wrapper" style="padding: 2px;">
             <div class="container-fluid">
             
                @yield('body') 
@@ -94,4 +97,5 @@
 
 @yield('script')
 </body>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </html>

@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{asset('css/master.css')}}">
     <style>
         body {
-            font-family:'Tajawal';font-size: 22px;
+            font-family:'Tajawal';font-size: 20;
         }
       </style>
 </head>

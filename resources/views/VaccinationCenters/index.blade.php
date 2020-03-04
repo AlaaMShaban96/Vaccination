@@ -45,11 +45,11 @@
 </div>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#staticBackdrop" 
-       style="display: list-item;margin-top: 1%;margin-right: 4%; ">
-    اضافة طفل
-  </button>
-  
+
+  <img  src="{{asset('image/add_child.png')}}" alt="Card image cap" style="width: 6%;margin-right: 4%;" data-toggle="modal" data-target="#staticBackdrop" 
+  style="margin-top: 1%;margin-right: 4%; ">
+
+  <h5 style="margin-top: 1%;margin-right: 3.5%; ">اضافة طفل</h5>
   <!-- Modal -->
   <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -90,14 +90,9 @@
                           </select>
                         </div>
                       
-                        {{-- <div class="md-form">
-                            <label for="home_adress" class="font-weight-light"  >عنوان السكن</label>
-                            <input type="text" id="home_adress" class="form-control" >
-                        
-                        </div> --}}
                         <div class="md-form">
-                            <label for="telephone_number" class="font-weight-light">رقم ولي الامر</label>
-                            <input type="text" id="telephone_number" class="form-control" >
+                            <label for="telephone_number" class="font-weight-light" >رقم ولي الامر</label>
+                            <input type="text" id="telephone_number" class="form-control" placeholder="يحب ان يكون قمة اكبر من 0 و عدد 10 ارقام" >
                         
                         </div>
                       
@@ -123,7 +118,6 @@
     </div>
   </div>
 
-    {{-- <img src="{{asset('image/2682157.jpg')}}" style="width: 20%;margin-left: 38%;margin-top: 3%;"> --}}
 
     <form id="getchilde" action="">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -136,15 +130,15 @@
     </div>
     
 
-    <div class="container" style="margin-top: 3%;">
+    <div class="container" style="margin-top: 1%;padding-right: 37%;">
         <div class="row">
           <form  id="form-child" action="/infochild" method="get">
             <div class="col-4">
 
                 <div class="card" style="width: 18rem; display: none ;" id="baby-info">
                     <img class="card-img-top " src="{{asset('image/babe.jpg')}}" alt="Card image cap"
-                         style="width: 59%;margin-right: 20%;">
-                     
+                         style="width: 50%;margin-right: 20%;">
+                
                         <div class="card-body">
                         <input type="hidden" name="id" id="span-child-id">
                           <h5> رقم الطفل :<span class="badge badge-success" id="span-id">12345678</span></h5>
@@ -152,19 +146,14 @@
                           <h5> السكن :<span class="badge badge-success" id="span-home_adress">عين زارة</span></h5>
                           <h5> رقم ولي الامر :<span class="badge badge-success" id="span-telephone_number">0927780208</span></h5>
                           {{-- <a href="{{url('/infochild/{id}')}}" id="info-child"></a> --}}
-                          <input type="submit" value="المزيد"  class="btn btn-primary" >
+                          <input type="submit" value="عرض "  class="btn btn-primary" >
                           </div>
                       
                 </div>
             </div>
           </form>
 
-          <div class="col-8">
-            <div id="vaccination_table">
-
-              </div>
-              
-            </div>
+         
           </div>
       </div>   
   

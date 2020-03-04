@@ -1,4 +1,4 @@
-
+{{-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,4 +87,43 @@ body {
       </div>
 
 </body>
-</html>
+</html> --}}
+
+@extends('auth/master')
+
+@section('content')
+    <!-- header-end -->
+
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+              <div class="col-ml-6" >
+                <img src="{{asset('index/img/ilstrator_img/email.svg')}}" alt="" style="width: 42%;margin-left: 27%;">
+
+              </div>
+                <div class="col-ml-6 ml-5" >
+                    <div class="bradcam_text">
+                     
+                      <form class="form-signin" method="POST" action="{{ url('send-password') }}"> 
+                        @csrf      
+                      <h2 class="form-signin-heading">ادخل البريد الالكتروني</h2>
+                      <input type="email" class="form-control" name="email" placeholder="البريد الالكتروني " required="" autofocus="" />
+                      <br>
+                      <button class="btn btn-lg btn-primary btn-block" type="submit">تغير كلمة السر</button>   
+                      @if ($errors->any())
+                      <div class="btn-block  btn btn-lg btn-danger" style="disply:non;">
+                      @foreach ($errors->all() as $error)
+                          <div>{{$error}}</div>
+                      @endforeach
+                      </div>
+                      @endif
+                    </form>
+                      
+                    </div>
+                   
+                </div>
+                
+            </div>
+        </div>
+    </div>

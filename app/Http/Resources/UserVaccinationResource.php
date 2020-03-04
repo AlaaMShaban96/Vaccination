@@ -14,14 +14,14 @@ class UserVaccinationResource extends JsonResource
      */
     public function toArray($request)
     {
-         return [
+         return [ 
             'data'=>[
-                "id"=> 5,
+                "id"=> $this->id,
                 "name"=> $this->name,
                 "email"=> $this->email,
-                "status"=> 1,
+                "status"=> $this->status,
                 "city"=>$this->city->name,
-                "phone_number"=> 1927780208,
+                "phone_number"=> $this->phone_number,
                 'vaccinations'=>new VaccinationResource($this->vaccinations),
             
             ]

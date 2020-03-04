@@ -19,7 +19,7 @@ class VaccinationController extends Controller
         $orders= Order::where('user_id', '=', auth()->user()->id);
         $cities = City::all();
   
-        return view('VaccinationCenters.index', compact('user','children','orders','cities'));
+        return view('VaccinationCenters.index', compact('children','orders','cities'));
     }
     public function showVaccinationAvailable()
     {

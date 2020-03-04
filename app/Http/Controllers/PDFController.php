@@ -29,7 +29,7 @@ class PDFController extends Controller
 
     $pdf->writeHTML($html_content, true, false, true, false, '');
 
-    $pdf->SetFont('DejaVu Sans', '', 11, '', true);
+    $pdf->SetFont('aealarabiya', '', 14, '', true);
 
     // D is the change of these two functions. Including D parameter will avoid 
     // loading PDF in browser and allows downloading directly

@@ -20,7 +20,7 @@ class ChildController extends Controller
             'name' => 'required',
             'date_of_birth' => 'required',
             'home_adress' => 'required',
-            'telephone_number' => 'required',
+            'telephone_number' => 'required|integer|not_in:0|numeric|digits:10'
          
         ]);
         $validatedData['user_id']=auth()->user()->id;
@@ -90,12 +90,12 @@ class ChildController extends Controller
 
     public function update(Request $request)
     {
-        // dd($request);
+
         $validatedData = $request->validate([
             'name' => 'required',
             'date_of_birth' => 'required',
             'home_adress' => 'required',
-            'telephone_number' => 'required',
+            'telephone_number' => 'required|not_in:0|numeric|digits:10',
          
         ]);
         $validatedData['user_id']=auth()->user()->id;
@@ -111,5 +111,40 @@ class ChildController extends Controller
     }
 
 
+
+
+    public function showChildToPublic(Request $request)
+    {
+        
+        $validatedData = $request->validate([
+            'id' => 'required',
+         
+        ]);
+        try {
+            $child = Child::find($validatedData['id']);
+            
+        } catch (\Throwable $th) {
+
+            return redirect()->back()->withErrors(['errors'=>'الطفل غير موجود'])->withInput();
+        }
+     
+
+        $childfiles=Childfile::where('child_id','=',$validatedData['id'])->get();
+         $index[0]="";
+         
+
+        foreach ($childfiles as $childfile) {
+
+            array_push($index,$childfile->vaccination_id);
+           
+
+        }
+        sort($index);
+        $exceptVaccinations=Vaccination::whereIn('id',$index)->get();
+      
+        $onlyVaccinations = Vaccination::whereNotIn('id',$index)->get();
+
+        return view('index.Pricing' ,compact('exceptVaccinations','onlyVaccinations','child'));
+    }
     
 }

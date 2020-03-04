@@ -10,8 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::view('/', 'index.index');
 
+Route::view('/app', 'index.app');
 
+Route::view('/myChildrenInfo', 'index.Pricing');
+
+Route::view('/about', 'index.contact');
+
+Route::get('/infoChildToPublic', 'ChildController@showChildToPublic');
 
 Route::middleware(['auth'])->group(function () {
     
@@ -68,7 +75,7 @@ Route::middleware(['auth'])->group(function () {
 // *********** admin routes *********
     Route::middleware(['admin'])->group(function () {
 
-        Route::get('/index','AdminController@index');
+        Route::get('/admin/index','AdminController@index');
 
         Route::get('/users','UserController@index');
 
