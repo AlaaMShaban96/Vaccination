@@ -13,16 +13,15 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('orders');
         Schema::create('orders', function (Blueprint $table) {
             
-            $table->bigIncrements('id');
-            $table->bigInteger('vaccination_id')->unsigned()->default(1);
-            $table->string('name');
-            $table->string('dose_time'); 
-            $table->Integer('quantity')->unsigned()->nullable();
-            $table->Integer('response_quantity')->unsigned()->nullable();
+            $table->increments('id')->index();
+            $table->smallInteger('vaccination_id')->unsigned()->nullable()->index();
+            $table->Integer('quantity')->unsigned()->nullable()->index();
+            $table->Integer('response_quantity')->unsigned()->nullable()->index();
             $table->smallInteger('status')->default(1);
-            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->smallInteger('user_id')->unsigned()->nullable()->index();
 
             $table->foreign('user_id')
                   ->references('id')

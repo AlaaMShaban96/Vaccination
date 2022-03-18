@@ -18,7 +18,7 @@
     <tr>
       <th scope="row">{{$vaccination->id}}</th>
       <td id="name{{$vaccination->id}}">{{$vaccination->name}}</td>
-      <td id="dose_time{{$vaccination->id}}">{{$vaccination->dose_time}}</td>
+      <td id="dose_time{{$vaccination->id}}">{{$vaccination->time->dose_time}}</td>
       <td id="quantity{{$vaccination->id}}">{{$vaccination->quantity}}</td>
       <td> <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#editVaccinations" onclick="editVaccinations({{$vaccination->id}})">تعديل</button> </td>
 
@@ -27,7 +27,7 @@
     
   </tbody>
 </table>
-
+{{$vaccinations->links()}}
 
 <!-- Add Vaccinations -->
 <div class="modal fade" id="addVaccinations" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -46,17 +46,11 @@
 
     <label for="exampleInputPassword1">موعد التعاطي</label>
     <select class="form-control" id="VaccinationDate" >
-      <option>بعد الولادة مباشرة</option>
-      <option>شهرين</option>
-      <option>4 شهور </option>
-      <option>6 شهور </option>
-      <option>9 شهور </option>
-      <option>12 شهر </option>
-      <option>18 شهر </option>
-      <option>6 سنوات</option>
-
-
-
+  
+      @foreach ($times as $time)
+           <option value="{{$time->id}}">{{$time->dose_time}}</option> 
+      @endforeach
+     
     </select>
     <label for="exampleInputPassword1">الكميـة</label>
     <input type="number" name="" class="form-control" id="VaccinationQuantity">
@@ -97,16 +91,10 @@
 
     <label for="exampleInputPassword1">موعد التعاطي</label>
     <select class="form-control" id="VDate">
-      <option>بعد الولادة مباشرة</option>
-      <option>شهرين</option>
-      <option>4 شهور </option>
-      <option>6 شهور </option>
-      <option>9 شهور </option>
-      <option>12 شهر </option>
-      <option>18 شهر </option>
-      <option>6 سنوات</option>
-
-
+      <option >اختر موعد التطعيمة</option> 
+      @foreach ($times as $time)
+       <option value="{{$time->id}}">{{$time->dose_time}}</option> 
+      @endforeach
 
     </select>
     <label for="exampleInputPassword1">الكميـة</label>

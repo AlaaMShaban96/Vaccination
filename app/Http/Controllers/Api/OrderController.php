@@ -20,14 +20,5 @@ class OrderController extends Controller
         return (new NewsResource($orders))->response()->setStatusCode(200);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+ 
 }

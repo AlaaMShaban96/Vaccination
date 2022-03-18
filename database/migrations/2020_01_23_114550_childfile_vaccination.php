@@ -15,9 +15,9 @@ class ChildfileVaccination extends Migration
     {
         Schema::create('childfile_vaccination', function (Blueprint $table) {
 
-            $table->bigInteger('vaccination_id')->unsigned();
+            $table->smallInteger('vaccination_id')->unsigned()->index();
         
-            $table->bigInteger('childfile_id')->unsigned();
+            $table->bigInteger('childfile_id')->unsigned()->index();
         
             $table->foreign('vaccination_id')
             ->references('id')

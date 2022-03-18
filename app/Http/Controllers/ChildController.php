@@ -20,7 +20,7 @@ class ChildController extends Controller
             'name' => 'required',
             'date_of_birth' => 'required',
             'home_adress' => 'required',
-            'telephone_number' => 'required|integer|not_in:0|numeric|digits:10'
+            'telephone_number' => 'required|integer|not_in:0|numeric|digits:9'
          
         ]);
         $validatedData['user_id']=auth()->user()->id;
@@ -74,9 +74,9 @@ class ChildController extends Controller
 
         }
         sort($index);
-        $exceptVaccinations=Vaccination::whereIn('id',$index)->get();
+        $exceptVaccinations=Vaccination::whereIn('id',$index)->orderBy('id', 'asc')->get();
       
-        $onlyVaccinations = Vaccination::whereNotIn('id',$index)->get();
+        $onlyVaccinations = Vaccination::whereNotIn('id',$index)->orderBy('id', 'asc')->get();
 
         return view('VaccinationCenters.infochild' ,compact('exceptVaccinations','onlyVaccinations','child'));
     }

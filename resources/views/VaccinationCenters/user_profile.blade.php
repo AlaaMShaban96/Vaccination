@@ -36,18 +36,18 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <input type="button" class="profile-edit-btn btn-warning " style="color:black;" name="btnAddMore" value="تعديل" data-toggle="modal" data-target="#staticBackdrop"/>
+                <button class="profile-edit-btn btn-warning " style="color:black;" name="btnAddMore" value="" data-toggle="modal" data-target="#staticBackdrop">تعديل  <i class="fas fa-user-edit"></i></button>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-work" style="margin-top:1%;">
                     <h4>الخدمات</h4>
-                    <a href="">الاطفال</a><br/>
-                    <a href="">ارسال طلب</a><br/>
-                    <a href="">استلام شحنة</a>
-                    <a href="">التطعيمات المتوفرة</a><br/>
-                    <a href="">تقارير</a><br/>
+                    <span >الاطفال</span><br/>
+                    <span >ارسال طلب</span><br/>
+                    <span >استلام شحنة</span><br/>
+                    <span >التطعيمات المتوفرة</span><br/>
+                    <span >تقارير</span><br/>
                  
                 </div>
             </div>

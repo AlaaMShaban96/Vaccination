@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use App\Providers\RouteServiceProvider;
 // use App\Http\Controllers\Auth\LoginController;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -51,31 +52,31 @@ class LoginController extends Controller
             'email' => 'email|required',
             'password' => 'required'
         ]);
+//   $user=  Admin::where('email','=',$loginData['email'])->first();
   $user=  User::where('email','=',$loginData['email'])->first();
-        if ($user->status == 2) {
-            return redirect()->back()->withErrors(['المركز خارج الخدمة مؤقتا']);
+
+        if ( !auth()->attempt($loginData)) {
+
+            return redirect()->back()->withErrors([' البريد الاكتروني غير صحيحة ','او',' كلمة السر غير صحيحة']);
+
         }else {
-           
-            
-                if(!auth()->attempt($loginData)) {
+            // dd(auth('admin')->user()->name);
+                if($user->status == 2) {
                 
-                    return redirect()->back()->withErrors([' البريد الاكتروني غير صحيحة ','او',' كلمة السر غير صحيحة']);
-                    // Redirect::back()->withErrors();
-                    // return response(['message'=>'Invalid credentials'],401);User::where('email',$loginData['email'])->where('password',$loginData['password'])->get()
+                    return redirect()->back()->withErrors(['المركز خارج الخدمة مؤقتا']);
                 }
-                // dd('sucssful',auth()->user());
                 switch (auth()->user()->account_type) {
+                    
                     case 1:
+
                         return redirect('/admin/index');
                         break;
                     case 2:
-                    return redirect('/user/index');
-                        break;
-                    
-                
+                        
+                         return redirect('/user/index');
+                        break;    
                 }
             }
-        // return (new UserResource( auth()->user()))->response()->setStatusCode(200);
     }
     public function logout(Request $request)
     {

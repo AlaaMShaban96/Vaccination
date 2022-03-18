@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class VaccinationResource extends JsonResource
+class TimeVaccinationUserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,15 +14,9 @@ class VaccinationResource extends JsonResource
      */
     public function toArray($request)
     {
-        
-       
-        return $this->resource->map(function ($vaccination) {
-         
         return [
-            "id"=> $vaccination->id,
-            "name"=> $vaccination->name,
-            "dose_time"=> $vaccination->time->dose_time,
+            'id'=>$this->id,
+            'name'=>$this->name,
         ];
-    });
     }
 }

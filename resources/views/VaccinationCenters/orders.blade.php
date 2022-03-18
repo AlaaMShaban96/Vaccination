@@ -2,7 +2,7 @@
 @section('body')
 
 
-<table class="table table-striped" id="Table1">
+<table class="table table-dark" id="Table1">
     <thead>
       <tr>
         <th scope="col">رقم الجرعة</th>
@@ -23,7 +23,7 @@
           <tr>
                 <th>{{$order->id}}</th>
                 <td>{{$order->vaccination->name}}</td>
-                <td>{{$order->vaccination->dose_time}}</td>
+                <td>{{$order->vaccination->time->dose_time}}</td>
                 <td>{{$order->quantity}}</td>
                 <td>{{$order->response_quantity}}</td>
                 <td>{{$order->created_at->format('d-m-yy')}}</td>

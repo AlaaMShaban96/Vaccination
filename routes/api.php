@@ -16,6 +16,10 @@ use Illuminate\Http\Request;
 
 Route::get('/news','Api\OrderController@index');
 
+Route::get('/time','Api\TimeController@index');
+
+Route::get('/time/{time}','Api\TimeController@show');
+
 Route::get('/vaccination','Api\VaccinationController@index');
 
 Route::get('/user','Api\UserController@index');

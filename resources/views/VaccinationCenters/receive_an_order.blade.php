@@ -1,6 +1,6 @@
 @extends('VaccinationCenters/master')
 @section('body')
-<h3><span class="badge badge-warning">الموافقة علي وصول الشحنة</span></h3>
+
 <table class="table table-dark">
     <thead>
       <tr>
@@ -19,9 +19,9 @@
             <tr>
             <th scope="row">{{$order->id}}</th>
               <td>{{$order->vaccination->name}}</td>
-              <td>{{$order->vaccination->dose_time}}</td>
+              <td>{{$order->vaccination->time->dose_time}}</td>
               <td>{{$order->response_quantity}}</td>
-              <td><button type="submit" class="btn btn-success" >تأكيد</button></td>
+              <td><button type="submit" class="btn btn-success" > تأكيد  <i class="fas fa-check"></i></button></td>
             </tr>
         </form>
           @endforeach

@@ -71,7 +71,7 @@
         <div class="col-8">
             <div style="overflow-y: scroll; height:625px;">
             <div class="col" id="exceptVaccinations">
-                <h3><span class="badge badge-success">التطعيمات المئخودة</span></h3>
+                <h3><span class="badge badge-success">التطعيمات المأخودة</span></h3>
                 <table class="table table-dark">
                     <thead>
                     <tr>
@@ -84,13 +84,11 @@
                     <tbody>
                     
                         @foreach ($child->childfiles as $childfile)
-                        {{-- <form action="/accept-order/{{$vaccination->id}}" method="post">
-                        @csrf --}}
+                    
                         @foreach ($childfile->vaccinations as $item)
 
-                        <td>{{$item->name}}</td>
-                        <td>{{$item->dose_time}}</td>
-                        {{-- <td>{{$item->users->name}}</td>  --}}
+                            <td>{{$item->name}}</td>
+                            <td>{{$item->time->dose_time}}</td>
 
                         @endforeach
                        
@@ -98,19 +96,19 @@
                         <td>{{$childfile->created_at->format('d-m-yy') }}</td>
                             
                             </tr>
-                        {{-- </form> --}}
+                       
                         @endforeach
                     
                     
                     </tbody>
                 </table>
-                {{-- {{$exceptVaccinations->links()}} --}}
+              
             </div>
 
             <div class="col" id="onlyVaccinations">
 
 
-                <h3><span class="badge badge-danger">التطعيمات الغير مئخودة</span></h3>
+                <h3><span class="badge badge-danger">التطعيمات الغير مأخودة</span></h3>
                 <table class="table table-dark">
                     <thead>
                     <tr>
@@ -120,7 +118,7 @@
                         <th scope="col"> </th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody> 
                     
                         @foreach ($onlyVaccinations as $vaccination)
                         {{-- <form action="/accept-order/{{$vaccination->id}}" method="post">
@@ -128,7 +126,7 @@
                             <tr>
                             <th scope="row" id="id{{$vaccination->id}}">{{$vaccination->id}}</th>
                             <td id="{{$vaccination->users()->where('user_id',auth()->user()->id)->get() =="[]"? "notfond":'fond' }}">{{$vaccination->name}}</td>
-                            <td>{{$vaccination->dose_time}}</td>
+                            <td>{{$vaccination->time->dose_time}}</td>
                             {{-- <td> <span id="">.</span></td> --}}
                             <td id="take-{{$vaccination->id}}"><input type="submit" class="btn btn-danger {{$vaccination->users()->where('user_id',auth()->user()->id)->get() =="[]"? "notfond":'fond' }}" value="اخذ الجرعة" onclick="take_a_dose({{$vaccination->id}})"/></td>                            
                             </tr>

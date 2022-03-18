@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\City;
+use App\Time;
 use App\User;
 use App\Child;
 use App\Order;
@@ -16,7 +17,7 @@ class VaccinationController extends Controller
     {    
         // $user  = User::find(1);
         $children = Child::where('user_id','=',auth()->user()->id)->get();
-        $orders= Order::where('user_id', '=', auth()->user()->id);
+        $orders= Order::where('user_id', '=', auth()->user()->id)->where('status','=',1);
         $cities = City::all();
   
         return view('VaccinationCenters.index', compact('children','orders','cities'));
@@ -30,7 +31,7 @@ class VaccinationController extends Controller
     }
     public function show_reports()
     {
-        return view('VaccinationCenters.reports' );
+        // return view('VaccinationCenters.reports');
 
     }
 
@@ -50,8 +51,9 @@ class VaccinationController extends Controller
 
     public function index()
     {
-        $vaccinations = Vaccination::all();
-        return view('admin/Vaccinations',compact('vaccinations'));
+        $vaccinations = Vaccination::orderBy('id')->paginate(7);
+       $times= Time::all();
+        return view('admin/Vaccinations',compact('vaccinations','times'));
     
     
     }
@@ -64,8 +66,8 @@ class VaccinationController extends Controller
         
         $this->validate($request, [
             'name' => 'required',
-            'dose_time' => 'required',
-            'quantity' => 'required',
+            'time_id' => 'required',
+            'quantity' => 'required|not_in:0',
             ]);
     // dd($request->dose_time);
             Vaccination::Create($request->all());
@@ -78,13 +80,13 @@ class VaccinationController extends Controller
     {   
         $this->validate($request, [
             'name' => 'required',
-            'dose_time' => 'required',
+            'time_id' => 'required',
             'quantity' => 'required',
         ]);
     
         $Vaccination= Vaccination::find($id);
         $Vaccination->name = $request->name;
-        $Vaccination->dose_time = $request->dose_time;
+        $Vaccination->time_id = $request->time_id;
         $Vaccination->quantity = $request->quantity;
     
         $Vaccination->save();

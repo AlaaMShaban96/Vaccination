@@ -12,8 +12,14 @@ function addVaccinations()
     var VaccinationDate = document.getElementById('VaccinationDate').value;
     var VaccinationQuantity = document.getElementById('VaccinationQuantity').value;
 
-var data = ("name="+VaccinationName+"&quantity="+VaccinationQuantity+"&dose_time="+VaccinationDate);
-console.log(data)
+var data = ("name="+VaccinationName+"&quantity="+VaccinationQuantity+"&time_id="+VaccinationDate);
+if(VaccinationQuantity<0)
+{
+  $('#success-alert').hide();
+      $('#danger-alert').show();
+      document.getElementById('danger-alert').innerHTML = "لا يمكن إدخال كمية بالسالب !";
+} 
+else {
 $.ajax({
     type:'POST',
     url:'/add-vaccinations',
@@ -22,6 +28,7 @@ $.ajax({
 
 
     success:function(data){
+      $('#danger-alert').hide();
       $('#success-alert').show();
         document.getElementById('success-alert').innerHTML="تمت إضافة التطيعمة "+VaccinationName+" بنجاح";
         document.getElementById('VaccinationName').value ="";
@@ -39,7 +46,7 @@ $.ajax({
          
           if(obj.errors.hasOwnProperty('quantity'))
           message +=" الكمية";
-      
+      $('#success-alert').hide();
       $('#danger-alert').show();
       document.getElementById('danger-alert').innerHTML= message;
       
@@ -47,7 +54,10 @@ $.ajax({
 
     }
 
-  });    
+  }); 
+}  
+
+
 }
 
 function editVaccinations(id) {
@@ -58,7 +68,22 @@ function editVaccinations(id) {
 
   document.getElementById('VId').value= id; 
   document.getElementById('VName').value= VaccinationName; 
-  document.getElementById('VDate').value= VaccinationDate; 
+  var VDate = document.getElementById('VDate');
+  
+ 
+  var x = document.getElementById("VDate");
+  
+  var i;
+  for (i = 0; i < x.options.length; i++) {
+    
+     if( x.options[i].text == VaccinationDate ){
+       x.options[i].setAttribute("selected", "selected");
+     }
+     
+  }
+ 
+
+  // document.getElementById('VDate').value = VaccinationDate; 
   document.getElementById('VQuantity').value= VaccinationQuantity; 
   
   }
@@ -71,15 +96,22 @@ function updateVaccinations()
   var name = document.getElementById('VName').value; 
   var dose_time = document.getElementById('VDate').value; 
   var quantity = document.getElementById('VQuantity').value; 
-var data="name="+name+"&id="+id+"&dose_time="+dose_time+"&quantity="+quantity;
-console.log(data);
+var data="name="+name+"&id="+id+"&time_id="+dose_time+"&quantity="+quantity;
 
+if(quantity<0)
+{
+  $('#editsuccess-alert').hide();
+      $('#editdanger-alert').show();
+      document.getElementById('editdanger-alert').innerHTML = "لا يمكن إدخال كمية بالسالب !";
+} 
+else {
  $.ajax ({
    type:'POST',
    url:'/update-vaccinations/'+id,
    data:data,
 
    success:function(data){
+    $('#editdanger-alert').hide();
     $('#editsuccess-alert').show();
     document.getElementById('editsuccess-alert').innerHTML="تم تعديل البيانات بنجاح";
 document.getElementById("name"+id).innerHTML = name ;    
@@ -98,7 +130,7 @@ document.getElementById("quantity"+id).innerHTML = quantity ;
        
         if(obj.errors.hasOwnProperty('quantity'))
         message +=" الكمية";
-    
+    $('#editsuccess-alert').hide();
     $('#editdanger-alert').show();
     document.getElementById('editdanger-alert').innerHTML= message;
   }
@@ -106,7 +138,7 @@ document.getElementById("quantity"+id).innerHTML = quantity ;
 
 
  });
-
+}
  
 }
 

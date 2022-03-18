@@ -13,12 +13,18 @@ class CreateVaccinationsTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('vaccinations');
         Schema::create('vaccinations', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->smallIncrements('id')->index();
             $table->string('name');
             $table->Integer('quantity');
-            $table->string('dose_time'); 
+            $table->tinyInteger('time_id')->unsigned()->nullable()->index();
             $table->timestamps();
+
+            $table->foreign('time_id')
+            ->references('id')
+            ->on('times')
+            ->onDelete('cascade');
         });
     }
 

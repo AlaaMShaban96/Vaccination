@@ -13,10 +13,13 @@ class CreateChildrenTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('children');
+
         Schema::create('children', function (Blueprint $table) {
-            $table->bigIncrements('id');
+
+            $table->bigIncrements('id')->index();
             $table->string('name');
-            $table->bigInteger('user_id');
+            $table->smallInteger('user_id')->unsigned()->index();
             $table->date('date_of_birth');
             $table->string('home_adress');
             $table->bigInteger('telephone_number');
@@ -27,6 +30,7 @@ class CreateChildrenTable extends Migration
             ->references('id')
             ->on('users')
             ->onDelete('cascade');
+
         });
     }
 

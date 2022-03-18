@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index() 
     {
-        $users = User::orderBy('name')->get();//->paginate(10);; 
+        $users = User::orderBy('account_type')->paginate(7); 
         $cities = City::all();
         return view('admin/users',compact('users','cities'));
 
@@ -85,6 +85,40 @@ class UserController extends Controller
      */
 
 
+    public function updateAdmin(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'phone_number' => 'required',
+            'city_id' => 'required',
+
+        ]);
+        $user= User::find($id);
+
+ if ( $request->password == 0) {
+
+      
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->phone_number=$request->phone_number;
+        $user->city_id=$request->city_id;
+
+ }else {
+       
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password=Hash::make($request->password);
+        $user->phone_number=$request->phone_number;
+        $user->city_id=$request->city_id;
+ }
+       
+
+        $user->save();
+        return response()->json([ 'succeful'=>'تم تعديل الحساب بنجاح'], 200);
+    }
+
      
     /**
      * Remove the specified resource from storage.
@@ -98,6 +132,14 @@ class UserController extends Controller
         $user->status = 2;
         $user->save();
         return response()->json([ 'succeful'=>'تمت إلغاء تفعيل الحساب بنجاح'], 200);
+    }
+
+    public function active($id)
+    {
+        $user = User::find($id);
+        $user->status = 1;
+        $user->save();
+        return response()->json([ 'succeful'=>'تمت  تفعيل الحساب بنجاح'], 200);
     }
 
 

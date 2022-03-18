@@ -28,6 +28,8 @@ class PasswordController extends Controller
         $user->password= Hash::make($data['password']);
 
         $user->save();
+
+        dd($data['password']);
           try {
                  
                  Mail::send('emails.resetPassword',compact('data','user'), function($message) use ($email) {

@@ -43,12 +43,14 @@
         <div id="sidebar-wrapper"> 
             <ul class="sidebar-nav">
                 <li > <a href="{{ url("/user-profile") }}"><i class="far fa-user-circle"></i> حسابي </a> </li>
-                <li> <a href="{{url('/user/index')}}"><i style='font-size:24px' class='fas'>&#xf292;</i>لوحة التحكم</a> </li>
-                <li> <a href="{{url('/send')}}"><i style='font-size:24px' class='far'>&#xf0e0;</i> ارسال طلب</a> </li>
-                <li> <a href="{{url('/orders')}}"><i style='font-size:24px' class='far'>&#xf1d8;</i> طلبات المرسلة</a> </li>
-                <li> <a href="{{url('/receive')}}"><i style='font-size:24px' class='fas'>&#xf01c;</i>  استلام شحنة</a> </li>
+                <li> <a href="{{url('/user/index')}}"><i style='font-size:24px' class='fas'>&#xf292;</i> لوحة التحكم</a> </li>
+                <li> <a href="{{url('/send')}}"> <i style='font-size:24px' class='far'>&#xf1d8;</i>  ارسال طلب</a> </li>
+                <li> <a href="{{url('/orders')}}"> <i style='font-size:24px' class='far'>&#xf0e0;</i> الطلبات المرسلة </a> </li>
+                <li> <a href="{{url('/receive')}}"><i style='font-size:24px' class='fas'>&#xf01c;</i>  استلام شحنة </a> </li>
                 <li> <a href="{{url('/my-vaccination-available')}}"><i style='font-size:24px' class='fas'>&#xf48e;</i> التطعيمات </a> </li>
                 <li> <a href="{{url('/infochildren')}}"><i style='font-size:24px' class='fas'>&#xf77c;</i>الاطفال</a> </li>
+                <li> <a href="{{url('/user/reports')}}"><i class="fas fa-chart-pie"></i>   الإحصائيات</a> </li>
+
                 {{--  <a href="{{url('/reports')}}">تقرير</a> </li> --}}
                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
                   <i style='font-size:24px' class='fas'>&#xf011;</i> تسجيل الخروج

@@ -13,13 +13,19 @@ class CreateChildfilesTable extends Migration
      */
     public function up()
     {
+        
+        Schema::dropIfExists('childfiles');
+
         Schema::create('childfiles', function (Blueprint $table) {
-            $table->bigIncrements('id');
 
-            $table->bigInteger('vaccination_id')->unsigned();
-            $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('child_id')->unsigned();
+            $table->bigIncrements('id')->index();
 
+            $table->smallInteger('vaccination_id')->unsigned()->index();
+            $table->smallInteger('user_id')->unsigned()->index();
+            $table->bigInteger('child_id')->unsigned()->index();
+
+           
+            
             $table->foreign('vaccination_id')
                 ->references('id')
                 ->on('vaccinations')
@@ -34,8 +40,7 @@ class CreateChildfilesTable extends Migration
                 ->references('id')
                 ->on('children')
                 ->onDelete('cascade');
-
-            $table->timestamps(); 
+                $table->timestamps(); 
 
         });
 
@@ -48,7 +53,8 @@ class CreateChildfilesTable extends Migration
      * @return void
      */
     public function down()
-    {
+    { 
+       
         Schema::dropIfExists('childfiles');
     }
 }

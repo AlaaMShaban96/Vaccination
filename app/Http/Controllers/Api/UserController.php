@@ -31,7 +31,6 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        // $user= User::findOrFail($id);
         return (new UserVaccinationResource($user))->response()->setStatusCode(200);
     }
 

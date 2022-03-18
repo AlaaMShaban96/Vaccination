@@ -13,8 +13,9 @@ class CreateCitiesTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('cities');
         Schema::create('cities', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->smallIncrements('id')->index();
             $table->string('name');
             $table->timestamps();
         });

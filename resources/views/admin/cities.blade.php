@@ -22,6 +22,7 @@
     @endforeach
   </tbody>
 </table>
+{{$cities->links()}}
 
 
 <!-- Add new city -->
@@ -62,8 +63,8 @@
       <div class="modal-body">
 
 
-        <div style=" display: none ;" id="success-alert" class="alert alert-success" role="alert"></div>
-        <div style=" display: none ;" id="danger-alert" class="alert alert-danger" role="alert"></div>
+        <div style=" display: none ;" id="editsuccess-alert" class="alert alert-success" role="alert"></div>
+        <div style=" display: none ;" id="editdanger-alert" class="alert alert-danger" role="alert"></div>
 
 
   <div class="form-group">

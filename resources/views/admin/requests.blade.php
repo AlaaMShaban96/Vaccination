@@ -10,30 +10,36 @@
     <table class="table">
       <thead class="thead-dark">
         <tr>
+          <th scope="col">تاريخ الطلب</th>
           <th scope="col">إسم المركز</th>
-          <th scope="col"> التطعيمة </th>
+          <th scope="col">نوع التطعيم</th>
           <th scope="col">موعد التعاطي</th>
-          <th scope="col">الكمية </th>
-
+          <th scope="col">الكمية المتوفرة</th>
+          <th scope="col">الكمية المطلوبة</th>
+          <th scope="col"> الكمية المراد إرسالها</th>
         <th></th>
+
+
         </tr>
       </thead>
       <tbody>
 
-       
+        <tr>
           @foreach ($orders as $order)
-          <tr>
+        <td>{{$order->created_at->format('yy/m/d')}}</td> 
           <td id="userName{{$order->id}}">{{$order->user->name}}</td>
         <td id="vaccinationName{{$order->id}}">{{$order->vaccination->name}}</td>
-          <td>{{$order->vaccination->dose_time}}</td>
+          <td>{{$order->vaccination->time->dose_time}}</td>
+          <td>{{$order->vaccination->quantity}}</td>
           <td id="orderQuantity{{$order->id}}">{{$order->quantity}}</td>
-          <td> <button type="button" class="btn btn-success" data-toggle="modal" data-target="#accept" onclick="accept_massege({{$order->id}});"><i class="fas fa-check"></i>   موافقة</button> </td>
+          <td ><input type="number"  class="form-control" id="response_quantity{{$order->id}}" value="{{$order->quantity}}"></td>
+          <td> <button type="button" class="btn btn-success" data-toggle="modal" data-target="#accept" onclick="accept_dialog({{$order->id}})">  موافقة</button> </td>
         </tr>
+
           @endforeach
-        
       </tbody>
     </table>
-  
+    {{$orders->links()}}
 {{-- @endif --}}
 
 
@@ -45,13 +51,11 @@
     <div class="modal-content">
       <div class="modal-body">
 
-
         <div  id="accept-massege" class="alert alert-light" role="alert"></div>
-        <div  style=" display: none ;" id="error-order-massege" class="alert alert-danger" role="alert"></div>
-
-        
+        <div  style=" display: none ; " id="error-order-massege" class="alert alert-danger" role="alert"></div>
         </div>
         <input type="hidden" id="order-id">
+
       <div class="modal-footer">
         
       <input type="button" class="btn btn-success" value=" موافق " onclick="acceptOrder();">
@@ -73,33 +77,32 @@
       <div class="modal-body">
 
 
-        <div style=" display: none ;" id="success-alert" class="alert alert-success" role="alert"></div>
-        <div style=" display: none ;" id="danger-alert" class="alert alert-danger" role="alert"></div>
+        <div style=" display: none ;" id="send-success" class="alert alert-success" role="alert"></div>
+        <div style=" display: none ;" id="send-danger" class="alert alert-danger" role="alert"></div>
 
 
   <div class="form-group">
-    <label for="exampleInputPassword1">اسم المركز</label>
-    <input type="text" name="v-name" class="form-control" id="c-name">
+    
+        <label for="exampleInputPassword1">اسم المركز</label>
+         <select id="send_user" class="form-control">
+        <option selected value="">إختر المركز</option>
+        @foreach ($users as $user)   
+      <option  value="{{$user->id}}">{{$user->name}}</option>
+      @endforeach
+      </select>
 
-    <label for="exampleInputPassword1">اسم التطعيمة</label>
-    <input type="text" name="v-name" class="form-control" id="v-name">
+      <label for="exampleInputPassword1">اسم التطعيم</label>
+      <select id="send_vaccination" class="form-control">
+     <option selected value="">إختر التطعيم</option>
+     @foreach ($vaccinations as $vaccination)   
+   <option  value="{{$vaccination->id}}">{{$vaccination->name}}</option>
+   @endforeach
+   </select>
 
-    <label for="exampleInputPassword1">موعد التعاطي</label>
-    <select class="form-control" id="VaccinationDate" >
-      <option>بعد الولادة مباشرة</option>
-      <option>شهرين</option>
-      <option>4 شهور </option>
-      <option>6 شهور </option>
-      <option>9 شهور </option>
-      <option>12 شهر </option>
-      <option>18 شهر </option>
-      <option>6 سنوات</option>
-
-
-
-    </select>
     <label for="exampleInputPassword1">الكميـة</label>
-    <input type="number" name="" class="form-control" id="v-quantity">
+    <input type="number" name="" class="form-control" id="send_quantity">
+
+    
   </div>
 
  

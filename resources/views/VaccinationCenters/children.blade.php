@@ -23,16 +23,26 @@
               <td id="telephone_number{{$child->id}}">{{$child->telephone_number }}</td>
               <td>
                 <button type="button" class="btn btn-warning" onclick="show_for_edit({{$child->id}})" data-toggle="modal" data-target="#staticBackdrop">
-                تعديل
+                 
+                  تعديل
+                  <i class="fas fa-user-edit"></i>
                 </button>
               </td>
+             
               <td>
-                {{-- <button type="button" class="btn btn-danger"  data-toggle="modal" onclick="chick_pefor_delete({{$child->id}})" data-target="#delete_Child-id">
-                حذف
-                </button> --}}
+              <a href="/infochild?id={{$child->id}}" class="btn btn-primary" > 
+                عرض
+                <i class="far fa-eye"></i>
+
+              </a>
+
               </td>
               <td>
-              <a href="/infochild?id={{$child->id}}" class="btn btn-primary" > عرض</a>
+                <button type="button" class="btn btn-light"  data-toggle="modal" onclick="chick_pefor_delete({{$child->id}})" data-target="#delete_Child-id">
+                  طباعة
+                  <i class="fas fa-cloud-download-alt"></i>
+
+                </button>
               </td>
             </tr>
      
@@ -74,7 +84,6 @@
       
               <!-- Material input email -->
               <div class="md-form">
-              <i class="fa fa-envelope prefix grey-text"></i>  
               <label for="date_of_birth" class="font-weight-light">مواليد الطفل</label>
               <input type="Date" id="date_of_birth" class="form-control" >
             
@@ -122,11 +131,11 @@
     <div class="modal-content">
       <div class="modal-body">
         <input type="hidden" id="idDelete">
-       <h4>هل تود حدف الطفل <span class="badge badge-warning" id="nameDelete">Warning</span> من النظام </h4> 
+       <h4>هل تود طباعة تقرير علي الطفل <span class="badge badge-warning" id="nameDelete">Warning</span> </h4> 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-info" data-dismiss="modal" id="closeDelete">الغاء</button>
-        <button type="button" class="btn btn-danger" onclick="delete_Child()">حذف</button>
+        <a type="a" class="btn btn-light" >طباعة</a>
       </div>
     </div>
   </div>

@@ -94,7 +94,7 @@
                                                   @foreach ($childfile->vaccinations as $item)
                           
                                                   <td>{{$item->name}}</td>
-                                                  <td>{{$item->dose_time}}</td>
+                                                  <td>{{$item->time->dose_time}}</td>
                                                   {{-- <td>{{$item->users->name}}</td>  --}}
                           
                                                   @endforeach
@@ -133,7 +133,7 @@
                                                       <tr>
                                                       {{-- <th scope="row">{{$vaccination->id}}</th> --}}
                                                       <td >{{$vaccination->name}}</td>
-                                                      <td>{{$vaccination->dose_time}}</td>
+                                                      <td>{{$vaccination->time->dose_time}}</td>
                                                       {{-- <td> <span id="">.</span></td> --}}
                                                       
                                                   {{-- </form> --}}

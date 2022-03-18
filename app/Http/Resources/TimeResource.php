@@ -2,9 +2,11 @@
 
 namespace App\Http\Resources;
 
+
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+
+class TimeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -12,9 +14,10 @@ class UserResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
+
     public function toArray($request)
     {
-        return $this->resource;
-      
-    }
+       
+        return $this->resource;       
+    } 
 }

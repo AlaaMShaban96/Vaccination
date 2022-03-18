@@ -22,6 +22,7 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => $faker->name,
         'status' => 1,
         'account_type' => 1,
+        // 'city_id' => App\City::find($faker->unique()->numberBetween($min = 31, $max = 40))->id,
         'city_id' => 1,
         'phone_number' => 1,
         'email' => $faker->unique()->safeEmail,

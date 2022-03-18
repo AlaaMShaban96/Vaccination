@@ -19,6 +19,7 @@ class ChildfileController extends Controller
         ]);
 
         $childfile['user_id']=auth()->user()->id;
+        
         $vaccination= auth()->user()->vaccinations()->where('vaccination_id',$childfile['vaccination_id'])->count();
 
         if ($vaccination==0) {

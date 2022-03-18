@@ -10,7 +10,7 @@
     
 
 
-  <table class="table table-striped" id="Table1">
+  <table class="table table-dark" id="Table1">
       <thead>
         <tr>
           <th scope="col">رقم الجرعة</th>
@@ -29,7 +29,7 @@
               
                   <th id="vaccination_id{{$index}}">{{$vaccination->id}}</th>
                   <td id="name{{$index}}">{{$vaccination->name}}</td>
-                  <td id="dose_time{{$index}}">{{$vaccination->dose_time}}</td>
+                  <td id="dose_time{{$index}}">{{$vaccination->time->dose_time}}</td>
                   <td id="quantity{{$index}}">{{$vaccination->users()->where('user_id',auth()->user()->id)->first()->pivot->quantity}}</td>
               </tr>
                 

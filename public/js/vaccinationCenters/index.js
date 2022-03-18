@@ -92,6 +92,7 @@ $('#addChildren').click(function(){
     success:function(data){
       var notification_child = document.getElementById('notification-child').innerHTML;
     //  notification_child ++;
+    console.log(notification_child);
       document.getElementById('notification-child').innerHTML = (++ notification_child );
       
       document.getElementById('done').innerHTML =

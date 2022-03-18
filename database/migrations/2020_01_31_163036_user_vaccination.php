@@ -15,9 +15,9 @@ class UserVaccination extends Migration
     {
         Schema::create('user_vaccination', function (Blueprint $table) {
 
-            $table->bigInteger('vaccination_id')->unsigned();
+            $table->smallInteger('vaccination_id')->unsigned()->index();
             $table->Integer('quantity')->unsigned()->nullable();
-            $table->bigInteger('user_id')->unsigned();
+            $table->smallInteger('user_id')->unsigned()->index();
         
             $table->foreign('vaccination_id')
                   ->references('id')

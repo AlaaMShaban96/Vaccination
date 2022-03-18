@@ -20,13 +20,15 @@ Route::view('/about', 'index.contact');
 
 Route::get('/infoChildToPublic', 'ChildController@showChildToPublic');
 
+
+
 Route::middleware(['auth'])->group(function () {
-    
+
     Route::middleware(['user'])->group(function () {
-            
+
         Route::get('/user/index','VaccinationController@show');
 
-        Route::get('/reports','VaccinationController@show_reports');
+        Route::view('/user/reports', 'VaccinationCenters.reports');
 
         Route::get('/my-vaccination-available','VaccinationController@showVaccinationAvailable');
 
@@ -40,18 +42,18 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/add-order', 'OrderController@store');
 
         Route::post('/accept-order/{id}', 'OrderController@update');
-        
+
 
         Route::post('/add-child', 'ChildController@store');
 
         Route::post('/delete-Child/{child}', 'ChildController@destroy');
 
         Route::post('/children/edit/child', 'ChildController@update');
-        
+
         Route::get('/getchild', 'ChildController@show');
-        
+
         Route::get('/infochild', 'ChildController@showChild');
-        
+
         Route::get('/infochildren', 'ChildController@showChildren');
 
 
@@ -59,9 +61,15 @@ Route::middleware(['auth'])->group(function () {
 
         Route::post('/takedose-childfile', 'ChildfileController@store');
 
-        Route::get('/orders-PDF','PDFController@userOrders');
+
         Route::get('/user-profile','UserController@show');
         Route::post('/user-profile/edit/update','UserController@update');
+
+        Route::group(['prefix' => '/report'], function () {
+
+            Route::get('/orders-PDF','PDFController@userOrders');
+
+        });
 
 
 
@@ -72,16 +80,18 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-// *********** admin routes *********
+    // *********** admin routes *********
     Route::middleware(['admin'])->group(function () {
 
         Route::get('/admin/index','AdminController@index');
 
+
         Route::get('/users','UserController@index');
-
         Route::post('/add-user','UserController@store');
-
+        Route::post('/update-user/{id}','UserController@updateAdmin');
         Route::post('/disactive-user/{id}','UserController@destroy');
+        Route::post('/active-user/{id}','UserController@active');
+
 
         Route::get('/Vaccinations', 'VaccinationController@index');
 
@@ -99,15 +109,15 @@ Route::middleware(['auth'])->group(function () {
 
 
         Route::get('/requests','OrderController@index');
+    Route::post('/accept_order/{id}','OrderController@accept');
+    Route::post('/send_order','OrderController@send');
 
-        Route::post('/accept_order/{id}','OrderController@accept');
 
-
-        Route::get('/reports', function () {
-            return view('admin/reports');
-        });
+            Route::get('/reports', function () {
+                return view('admin/reports');
             });
-});
+                });
+    });
 
 
 Route::post('send-password','PasswordController@sendPassword');

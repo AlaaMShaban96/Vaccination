@@ -7,28 +7,30 @@
     <tr>
       <th scope="col">الإسم</th>
       <th scope="col">إسم المستخدم</th>
-     
       <th scope="col">نوع الحساب</th>
       <th scope="col">رقم الهاتف</th>
       <th scope="col">العنوان</th>
       <th scope="col">حالة الحساب</th>
       <th></th>
-     
     </tr>
   </thead>
   <tbody>
+ 
     @foreach ($users as $user)
-        
-    <tr>
+      <tr>
     <td id="name{{$user->id}}">{{$user->name}}</td>
     <td id="email{{$user->id}}">{{$user->email}}</td>
-    {{-- <td id="password{{$user->id}}">{{$user->password}}</td> --}}
     <td id="account_type{{$user->id}}">{{$user->account_type === 1 ? "مدير نظام" : "مركز صحي"}}</td>
     <td id="phone_number{{$user->id}}">{{$user->phone_number}}</td>
     <td id="city_name{{$user->id}}">{{$user->city->name}}</td>
     <td id="status{{$user->id}}">{{$user->status === 1 ? "مفعل" : "غير مفعل"}}</td>
-
-    <td> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit" onclick="edit_user({{$user->id}});">تعديل</button> <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete" onclick="set_user_id({{ $user->id }});">إلغاء تفعيل</button> </td>
+    <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit" onclick="edit_user({{$user->id}})">تعديل</button> 
+    
+      @if ($user->status == 1)  
+    <button  type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete" onclick="set_user_id({{ $user->id }})">إلغاء تفعيل</button> </td>
+    @else 
+    <button   type="button" class="btn btn-success"  onclick="active({{ $user->id }})">تفعيل</button> </td>
+    @endif
 
     </tr>
     @endforeach
@@ -38,6 +40,7 @@
     
   </tbody>
 </table>
+{{$users->links()}}
 
 
 <!-- Add new Account -->
@@ -48,7 +51,7 @@
         <div style=" display: none ;" id="success-alert" class="alert alert-success" role="alert"></div>
         <div style=" display: none ;" id="danger-alert" class="alert alert-danger" role="alert"></div>
       </div>
-      <form>
+      
       
       <div class="modal-body">
  
@@ -75,7 +78,7 @@
   <div class="form-group col-md-4">
     <label for="inputState">العنوان</label>
     <select id="city_id" class="form-control">
-      <option selected>إختر المدينة</option>
+      <option selected value="">إختر المدينة</option>
       @foreach ($cities as $city)
           
     <option  value="{{$city->id}}">{{$city->name}}</option>
@@ -95,11 +98,11 @@
 
         </div>
       <div class="modal-footer">
-      <input type="submit" class="btn btn-success" value=" حفـظ " onclick="add_user();">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"> إلغـاء </button>
+      <input type="submit" class="btn btn-success" value=" حفـظ " onclick="add_user()">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="refresh()"> إلغـاء </button>
        
       </div>
-      </form>
+      
     </div>
   </div>
 </div>
@@ -113,10 +116,10 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <div style=" display: none ;" id="success-alert" class="alert alert-success" role="alert"></div>
-        <div style=" display: none ;" id="danger-alert" class="alert alert-danger" role="alert"></div>
+        <div style=" display: none ;" id="editsuccess-alert" class="alert alert-success" role="alert"></div>
+        <div style=" display: none ;" id="editdanger-alert" class="alert alert-danger" role="alert"></div>
       </div>
-      <form>
+      
       
       <div class="modal-body">
  
@@ -143,7 +146,7 @@
   <div class="form-group col-md-4">
     <label for="inputState">العنوان</label>
     <select id="editcity_id" class="form-control">
-      <option selected>إختر المدينة</option>
+      <option selected value="">إختر المدينة</option>
       @foreach ($cities as $city)   
     <option  value="{{$city->id}}">{{$city->name}}</option>
     @endforeach
@@ -152,15 +155,15 @@
   </div>
 
   
+  <input type="hidden" name="" id="edituserid">
 
         </div>
-        <input type="hidden" name="" id="edituserid">
       <div class="modal-footer">
-      <input type="submit" class="btn btn-success" value=" حفـظ " onclick="update_user();">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"> إلغـاء </button>
+      <input type="submit" class="btn btn-success" value=" حفـظ " onclick="update_user()">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="refresh()"> إلغـاء </button>
        
       </div>
-      </form>
+      
     </div>
   </div>
 </div>

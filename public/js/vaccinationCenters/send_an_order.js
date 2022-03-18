@@ -11,7 +11,7 @@ $('#baby-info').hide();
       });
   
       function send(id) { 
-        console.log(id);
+    
         var dose_time =document.getElementById("dose_time"+id).innerHTML;
         var vaccination_id =document.getElementById("vaccination_id"+id).innerHTML;
         var name =document.getElementById("name"+id).innerHTML;
