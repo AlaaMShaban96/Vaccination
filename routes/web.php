@@ -27,8 +27,9 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['user'])->group(function () {
 
         Route::get('/user/index','VaccinationController@show');
+        Route::get('/user/reports','VaccinationController@show_reports');
 
-        Route::view('/user/reports', 'VaccinationCenters.reports');
+        // Route::view('/user/reports', 'VaccinationCenters.reports');
 
         Route::get('/my-vaccination-available','VaccinationController@showVaccinationAvailable');
 
@@ -68,6 +69,9 @@ Route::middleware(['auth'])->group(function () {
         Route::group(['prefix' => '/report'], function () {
 
             Route::get('/orders-PDF','PDFController@userOrders');
+            Route::get('/child-PDF','PDFController@child_PDF');
+            Route::get('/avalibel-vaccin-PDF','PDFController@avalibel_vaccin_PDF');
+
 
         });
 

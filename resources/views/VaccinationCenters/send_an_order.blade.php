@@ -15,38 +15,42 @@
               </tr>
             </thead>
             <tbody>
-                
-                  
+
+
                   @foreach ($vaccinations as $vaccination)
                   <tr>
                     <input type="hidden" name="{{$index= $vaccination->id}}">
-                    
+
                       {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
                         <th id="vaccination_id{{$index}}">{{$vaccination->id}}</th>
                         <td id="name{{$index}}">{{$vaccination->name}}</td>
                         <td id="dose_time{{$index}}">{{$vaccination->time->dose_time}}</td>
                         <td><input id="quantity{{$index}}" class="quantity" type="number" aria-label="Checkbox for following text input"></td>
-                        <td> {{ $chilren->count() - $vaccination->childfiles->count() }}  طفل </td>
-                        <td><button type="submit" class="btn btn-success"  onclick="send({{$index}})"> ارسل الطلب <i class="fas fa-paper-plane"></i></button></td>                         
+                        <td>
+                            @php
+                               $count= $chilren->count() - $vaccination->childfiles->count()
+                            @endphp
+                            {{ $count >0 ?$count :0 }}  طفل </td>
+                        <td><button type="submit" class="btn btn-success"  onclick="send({{$index}})"> ارسل الطلب <i class="fas fa-paper-plane"></i></button></td>
                     </tr>
-                      
-                  @endforeach
-                  
 
-                
+                  @endforeach
+
+
+
             </tbody>
           </table>
       {{$vaccinations->links()}}
       {{-- </div> --}}
-     
+
           <div class="alert alert-success" role="alert" id="succsful">
-            
+
           </div>
           <div class="alert alert-danger" role="alert" id="errur">
-           
+
           </div>
-         
+
 @endsection
 @section('script')
-  <script src="{{asset('js/vaccinationCenters/send_an_order.js')}}"></script>    
+  <script src="{{asset('js/vaccinationCenters/send_an_order.js')}}"></script>
 @endsection
