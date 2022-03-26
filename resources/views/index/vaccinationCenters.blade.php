@@ -20,7 +20,7 @@
                                   </select>
                                 {{-- <input type="number" name="id" placeholder="Enter ادخل رقم الطفل و تضغظ علي " class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"> --}}
 
-                                <button type="submit" class="btn btn-info"  >تعديل</button>
+                                <button type="submit" class="btn btn-info"  >بحت</button>
                             </div>
                           </form>
                     </div>
