@@ -24,9 +24,21 @@ class VaccinationController extends Controller
     }
     public function showVaccinationAvailable()
     {
-        $user= User::find(1);
-
+        $user= auth()->user();
         return view('VaccinationCenters.vaccinationAvailable' ,compact('user'));
+
+    }
+    public function showVaccination(Request $request)
+    {
+            $users  = User::where('account_type',2)->get()->toArray();
+            return view('index.vaccinationCenters' ,compact('users'));
+
+    }
+    public function showVaccinationSearch(Request $request)
+    {
+        $users  = User::where('account_type',2)->get()->toArray();
+        $user  = User::find($request->user_id);
+        return view('index.vaccinationCenters' ,compact('user','users'));
 
     }
     public function show_reports()

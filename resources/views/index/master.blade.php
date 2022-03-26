@@ -13,14 +13,15 @@
 
     <!-- CSS here -->
     <link href='https://fonts.googleapis.com/css?family=Tajawal' rel='stylesheet'>
-  
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="{{ asset('index/css/bootstrap.min.css')}}">
-  
+
     <link rel="stylesheet" href="{{ asset('index/css/animate.min.css')}}">
-    
+
     <link rel="stylesheet" href="{{ asset('index/css/slicknav.css')}}">
     <link rel="stylesheet" href="{{ asset('index/css/style.css')}}">
-    
+
 
     <!-- <link rel="stylesheet" href="css/responsive.css')}}"> -->
 </head>
@@ -50,7 +51,8 @@
                                     <li><a class="active" href="{{url('/')}}">الصفحة الرئسية</a></li>
                                     <li><a href="{{url('/app')}}">تطعيماتي</a></li>
                                     <li><a href="{{url('/myChildrenInfo')}}">طفلي</a></li>
-        
+                                    <li><a href="{{url('/vaccinationCenters')}}">مراكز التطعيم</a></li>
+
                                     <li><a href="{{url('/about')}}">حول</a></li>
                                     </ul>
                                 </nav>
@@ -91,7 +93,7 @@
                                 اول تطبيق في ليبيا يوفر خدمات الاستفسار و المراقبة لي ملف طفلك
 
                             </p>
-                           
+
 
                         </div>
                     </div>
@@ -104,7 +106,7 @@
                                 <li>التعرف علي اماكن التطعيمات</li>
                                 <li>مراقبة ملف طفلك</li>
                                 <li>التعرف علي التطعيمات في المراكز</li>
-                              
+
                             </ul>
 
                         </div>
@@ -135,7 +137,7 @@
                                     </a>
                                 </li>
                                 <li><a href="#">
-                                     تحميل للاندرويد 
+                                     تحميل للاندرويد
                                     </a>
                                 </li>
                                 </ul>
@@ -163,20 +165,18 @@
 
     <!-- JS here -->
 
-   
-    <script src="{{ asset('index/js/vendor/jquery-1.12.4.min.js')}}"></script>
-   
+    {{-- <script src="{{ asset('index/js/vendor/jquery-1.12.4.min.js')}}"></script> --}}
+    {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
     <script src="{{ asset('index/js/bootstrap.min.js')}}"></script>
-   
+    {{-- <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> --}}
     <script src="{{ asset('index/js/wow.min.js')}}"></script>
-    
-    <script src="{{ asset('index/js/jquery.slicknav.min.js')}}"></script>
-   
-    
 
-   
+    <script src="{{ asset('index/js/jquery.slicknav.min.js')}}"></script>
+
 
     <script src="{{ asset('index/js/main.js')}}"></script>
+
+    @yield('script')
 </body>
 
 </html>

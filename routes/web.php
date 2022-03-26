@@ -20,6 +20,8 @@ Route::view('/about', 'index.contact');
 
 Route::get('/infoChildToPublic', 'ChildController@showChildToPublic');
 
+Route::get('/vaccinationCenters', 'VaccinationController@showVaccination');
+Route::post('/vaccinationCenters', 'VaccinationController@showVaccinationSearch');
 
 
 Route::middleware(['auth'])->group(function () {
