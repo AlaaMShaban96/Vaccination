@@ -1,46 +1,52 @@
 @extends('admin/master')
 @section('content')
 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#add"> إضافة حساب جديد +</button>
+@if (empty($users))
+  <img src="image/errors/noData.jpg" width="50%" style="margin-right: 22%;">
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">الإسم</th>
-      <th scope="col">إسم المستخدم</th>
-      <th scope="col">نوع الحساب</th>
-      <th scope="col">رقم الهاتف</th>
-      <th scope="col">العنوان</th>
-      <th scope="col">حالة الحساب</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
- 
-    @foreach ($users as $user)
-      <tr>
-    <td id="name{{$user->id}}">{{$user->name}}</td>
-    <td id="email{{$user->id}}">{{$user->email}}</td>
-    <td id="account_type{{$user->id}}">{{$user->account_type === 1 ? "مدير نظام" : "مركز صحي"}}</td>
-    <td id="phone_number{{$user->id}}">{{$user->phone_number}}</td>
-    <td id="city_name{{$user->id}}">{{$user->city->name}}</td>
-    <td id="status{{$user->id}}">{{$user->status === 1 ? "مفعل" : "غير مفعل"}}</td>
-    <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit" onclick="edit_user({{$user->id}})">تعديل</button> 
-    
-      @if ($user->status == 1)  
-    <button  type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete" onclick="set_user_id({{ $user->id }})">إلغاء تفعيل</button> </td>
-    @else 
-    <button   type="button" class="btn btn-success"  onclick="active({{ $user->id }})">تفعيل</button> </td>
-    @endif
+@else
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">الإسم</th>
+            <th scope="col">إسم المستخدم</th>
+            <th scope="col">نوع الحساب</th>
+            <th scope="col">رقم الهاتف</th>
+            <th scope="col">العنوان</th>
+            <th scope="col">حالة الحساب</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
 
-    </tr>
-    @endforeach
+        @foreach ($users as $user)
+            <tr>
+        <td id="name{{$user->id}}">{{$user->name}}</td>
+        <td id="email{{$user->id}}">{{$user->email}}</td>
+        <td id="account_type{{$user->id}}">{{$user->account_type === 1 ? "مدير نظام" : "مركز صحي"}}</td>
+        <td id="phone_number{{$user->id}}">{{$user->phone_number}}</td>
+        <td id="city_name{{$user->id}}">{{$user->city->name}}</td>
+        <td id="status{{$user->id}}">{{$user->status === 1 ? "مفعل" : "غير مفعل"}}</td>
+        <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit" onclick="edit_user({{$user->id}})">تعديل</button>
 
-   
-   
-    
-  </tbody>
-</table>
-{{$users->links()}}
+            @if ($user->status == 1)
+        <button  type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete" onclick="set_user_id({{ $user->id }})">إلغاء تفعيل</button> </td>
+        @else
+        <button   type="button" class="btn btn-success"  onclick="active({{ $user->id }})">تفعيل</button> </td>
+        @endif
+
+        </tr>
+        @endforeach
+
+
+
+
+        </tbody>
+    </table>
+  {{$users->links()}}
+
+@endif
+
 
 
 <!-- Add new Account -->
@@ -51,10 +57,10 @@
         <div style=" display: none ;" id="success-alert" class="alert alert-success" role="alert"></div>
         <div style=" display: none ;" id="danger-alert" class="alert alert-danger" role="alert"></div>
       </div>
-      
-      
+
+
       <div class="modal-body">
- 
+
         <div class="form-group">
           <label for="exampleInputEmail1">الإسم</label>
           <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
@@ -80,10 +86,10 @@
     <select id="city_id" class="form-control">
       <option selected value="">إختر المدينة</option>
       @foreach ($cities as $city)
-          
+
     <option  value="{{$city->id}}">{{$city->name}}</option>
     @endforeach
- 
+
     </select>
   </div>
 
@@ -100,9 +106,9 @@
       <div class="modal-footer">
       <input type="submit" class="btn btn-success" value=" حفـظ " onclick="add_user()">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="refresh()"> إلغـاء </button>
-       
+
       </div>
-      
+
     </div>
   </div>
 </div>
@@ -119,10 +125,10 @@
         <div style=" display: none ;" id="editsuccess-alert" class="alert alert-success" role="alert"></div>
         <div style=" display: none ;" id="editdanger-alert" class="alert alert-danger" role="alert"></div>
       </div>
-      
-      
+
+
       <div class="modal-body">
- 
+
         <div class="form-group">
           <label for="exampleInputEmail1">الإسم</label>
           <input type="text" class="form-control" id="editname" aria-describedby="emailHelp">
@@ -147,23 +153,23 @@
     <label for="inputState">العنوان</label>
     <select id="editcity_id" class="form-control">
       <option selected value="">إختر المدينة</option>
-      @foreach ($cities as $city)   
+      @foreach ($cities as $city)
     <option  value="{{$city->id}}">{{$city->name}}</option>
     @endforeach
- 
+
     </select>
   </div>
 
-  
+
   <input type="hidden" name="" id="edituserid">
 
         </div>
       <div class="modal-footer">
       <input type="submit" class="btn btn-success" value=" حفـظ " onclick="update_user()">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="refresh()"> إلغـاء </button>
-       
+
       </div>
-      
+
     </div>
   </div>
 </div>
@@ -187,7 +193,7 @@
 
       </div>
       <form>
-      
+
       <div class="modal-body">
         <input type="hidden" id="disactive_user_id">
  <h3>هل أنت متأكد من إلغـاء تفعيل هذا الحساب ؟</h3>
@@ -195,7 +201,7 @@
       <div class="modal-footer">
       <input type="submit" class="btn btn-danger" value=" إلغاء تفعيل " onclick="disActive();">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"> إلغـاء </button>
-       
+
       </div>
       </form>
     </div>

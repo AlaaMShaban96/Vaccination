@@ -1,5 +1,8 @@
 <?php
 
+use App\User;
+use App\Order;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,6 +13,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('test', function () {
+    $reserve = User::with('orders')->withCount('orders')
+    ->orderByDesc('orders_count')->take(5)->get();
+    dd($reserve,date('Y'));
+});
 Route::view('/', 'index.index');
 
 Route::view('/app', 'index.app');

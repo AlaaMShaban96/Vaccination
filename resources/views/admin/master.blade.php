@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-{{--     
+{{--
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -13,7 +13,7 @@
     <script src="https://kit.fontawesome.com/5366d31a4a.js" crossorigin="anonymous"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  
+
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -1487,7 +1487,7 @@ font-family:'Tajawal'; font-size: 20px; }
 }
 
 
-    
+
     </style>
 </head>
 <body data-spy="scroll">
@@ -1503,31 +1503,31 @@ font-family:'Tajawal'; font-size: 20px; }
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand"> <a href={{ url('/index') }}><i class="fas fa-home"></i>   الرئيسية</a> </li>
+                <li class="sidebar-brand"> <a href={{ url('/admin/index') }}><i class="fas fa-home"></i>   الرئيسية</a> </li>
                 <li> <a href={{ url('/users') }}><i class="far fa-user-circle"></i>   الحسابات</a></li>
                 <li> <a href={{ url('/Vaccinations') }}><i class="fas fa-syringe"></i>   التطعيمات</a> </li>
                 <li> <a href={{ url('/cities') }}><i class="fas fa-map-marker-alt"></i>   المدن</a> </li>
                 <li> <a href={{ url('/requests') }}>
                     <i class="far fa-bell"></i>   طلبات الجرعات</a> </li>
-                <li> <a href={{ url('/reports') }}><i class="fas fa-chart-pie"></i>   الإحصائيات</a> </li>
+                {{-- <li> <a href={{ url('/reports') }}><i class="fas fa-chart-pie"></i>   الإحصائيات</a> </li> --}}
                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
                     تسجيل الخروج
-                   </a> </li>   
+                   </a> </li>
                    <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                        {{ csrf_field() }}
                    </form>
-                
+
             </ul>
         </div> <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
         <div style=" overflow-y: scroll; height:625px;">
 
         <div id="page-content-wrapper">
-          
+
             <div class="container-fluid">
-            
-               @yield('content') 
-               
+
+               @yield('content')
+
                 </div>
             </div>
         </div> <!-- /#page-content-wrapper -->
@@ -1552,7 +1552,7 @@ font-family:'Tajawal'; font-size: 20px; }
           }
         });
       });
-       
+
     </script>
 
 @yield('script')
