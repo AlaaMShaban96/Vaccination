@@ -21,7 +21,7 @@ class UserController extends Controller
         return (new UserResource($user))->response()->setStatusCode(200);
     }
 
- 
+
 
     /**
      * Display the specified resource.

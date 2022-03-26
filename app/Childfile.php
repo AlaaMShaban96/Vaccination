@@ -15,7 +15,7 @@ class Childfile extends Model
     {
         return $this->belongsTo(Child::class);
     }
-    
+
     public function vaccinations()
     {
 

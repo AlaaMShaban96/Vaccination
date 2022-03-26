@@ -22,7 +22,7 @@ class Child extends Model
 
     public function getAgeAttribute()
     {
-  
+
         return Carbon::createFromDate($this->attributes['date_of_birth'])
                 ->diff(Carbon::now())
                 ->format('%y سنة , %m  شهر , %d يوم');

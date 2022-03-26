@@ -15,10 +15,10 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
-        $orders=Order::where('status',3)->get();       
+    {
+        $orders=Order::where('status',3)->get();
         return (new NewsResource($orders))->response()->setStatusCode(200);
     }
 
- 
+
 }

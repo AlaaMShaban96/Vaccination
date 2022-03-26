@@ -1,6 +1,5 @@
 @extends('VaccinationCenters/master')
 @section('body')
-
 <table class="table table-dark">
     <thead>
       <tr>
@@ -12,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      
+
         @foreach ($orders as $order)
         <form action="/accept-order/{{$order->id}}" method="post">
           @csrf
@@ -25,8 +24,8 @@
             </tr>
         </form>
           @endforeach
-     
-      
+
+
     </tbody>
   </table>
   {{$orders->links()}}
@@ -34,18 +33,18 @@
     @if ($errors->any())
      <div class="alert alert-danger" role="alert" id="#errur" >
       okkkk
-      </div> 
+      </div>
      @endif
      @if (session()->has('message'))
        <div class="alert alert-success" role="alert" id="succsful" >
         {{session()->get('message')}}
-       </div>  
+       </div>
      @endif
-       
-    
-   
-   
+
+
+
+
 @endsection
 @section('script')
-  <script src="{{asset('js/vaccinationCenters/receive_an_order.js')}}"></script>    
+  <script src="{{asset('js/vaccinationCenters/receive_an_order.js')}}"></script>
 @endsection

@@ -14,7 +14,7 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var array 
+     * @var array
      */
     protected $fillable = [
         'id','name', 'email', 'password','status','city_id','phone_number','account_type'
@@ -44,12 +44,12 @@ class User extends Authenticatable
     public function vaccinations()
     {
         return $this->belongsToMany(Vaccination::class, 'user_vaccination')->withPivot('quantity');
-    
+
     }
     public function city()
     {
         return $this->belongsTo(City::class,'city_id');
     }
-   
+
 }
 

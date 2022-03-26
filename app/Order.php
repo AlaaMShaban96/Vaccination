@@ -1,6 +1,6 @@
 <?php
 
-namespace App; 
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,5 +18,5 @@ class Order extends Model
     {
         return $this->belongsTo(Vaccination::class);
     }
-   
+
 }

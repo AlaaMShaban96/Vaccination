@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-  
+
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -20,9 +20,9 @@
 </style>
 
 <title>مراكز تطعيمات</title>
-   
+
     <style>
-    
+
     </style>
 </head>
 <body>
@@ -30,9 +30,9 @@
         <div class="collapse navbar-collapse" id="navbarsExample02">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active" style="color:white;">
-                  مركز {{auth()->user()->name}} 
+                  مركز {{auth()->user()->name}}
                 </li>
-                
+
                 {{-- <li class="nav-item"> <a class="nav-link" href="#">Link</a> </li> --}}
             </ul>
             <form class="form-inline my-2 my-md-0"> </form>
@@ -40,7 +40,7 @@
     </nav>
     <div id="wrapper" class="toggled">
         <!-- Sidebar -->
-        <div id="sidebar-wrapper"> 
+        <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li > <a href="{{ url("/user-profile") }}"><i class="far fa-user-circle"></i> حسابي </a> </li>
                 <li> <a href="{{url('/user/index')}}"><i style='font-size:24px' class='fas'>&#xf292;</i> لوحة التحكم</a> </li>
@@ -54,28 +54,28 @@
                 {{--  <a href="{{url('/reports')}}">تقرير</a> </li> --}}
                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
                   <i style='font-size:24px' class='fas'>&#xf011;</i> تسجيل الخروج
-              </a> </li>   
+              </a> </li>
               <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                   {{ csrf_field() }}
               </form>
-               
+
             </ul>
         </div> <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
         <div id="page-content-wrapper" style="padding: 2px;">
             <div class="container-fluid">
-            
-               @yield('body') 
-             
+
+               @yield('body')
+
             </div>
         </div> <!-- /#page-content-wrapper -->
     </div> <!-- /#wrapper -->
     <!-- Bootstrap core JavaScript -->
-   
+
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script> <!-- Menu Toggle Script -->
     <script>
-       
+
 
 
       $(function(){
@@ -93,9 +93,9 @@
         });
       });
 
-        
+
     </script>
-    
+
 
 @yield('script')
 </body>

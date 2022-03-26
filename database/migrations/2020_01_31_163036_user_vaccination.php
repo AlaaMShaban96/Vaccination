@@ -18,17 +18,17 @@ class UserVaccination extends Migration
             $table->smallInteger('vaccination_id')->unsigned()->index();
             $table->Integer('quantity')->unsigned()->nullable();
             $table->smallInteger('user_id')->unsigned()->index();
-        
+
             $table->foreign('vaccination_id')
                   ->references('id')
                   ->on('vaccinations')
                   ->onDelete('cascade');
-        
+
             $table->foreign('user_id')
                   ->references('id')
                   ->on('users')
                   ->onDelete('cascade');
-        
+
         });
     }
 

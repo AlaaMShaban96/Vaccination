@@ -16,7 +16,7 @@ class CityController extends Controller
     public function index()
     {
         $cities = City::orderBy('id')->paginate(7);
-    
+
         return view('admin/cities',compact('cities'));
     }
 
@@ -38,13 +38,13 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-      
+
         $this->validate($request, [
             // 'id' => 'required',
             'name' => 'required',
         ]);
- 
-        City::firstOrCreate($request->all()); 
+
+        City::firstOrCreate($request->all());
 
         return response()->json([ 'succeful'=>'تمت اضافة المدينة بنجاح'], 200);
     }
@@ -57,7 +57,7 @@ class CityController extends Controller
      */
     public function show($id)
     {
-    
+
     }
 
     /**
@@ -79,11 +79,11 @@ class CityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {   
+    {
         $this->validate($request, [
             'name' => 'required',
         ]);
- 
+
         $city= City::find($id);
         $city->name=$request->name;
         $city->save();

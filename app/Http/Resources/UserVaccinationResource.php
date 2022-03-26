@@ -14,8 +14,8 @@ class UserVaccinationResource extends JsonResource
      */
     public function toArray($request)
     {
-         return [ 
-           
+         return [
+
                 "id"=> $this->id,
                 "name"=> $this->name,
                 "email"=> $this->email,
@@ -23,9 +23,9 @@ class UserVaccinationResource extends JsonResource
                 "city"=>$this->city->name,
                 "phone_number"=> $this->phone_number,
                 'vaccinations'=>new VaccinationResource($this->vaccinations),
-            
-            
+
+
           ];
-      
+
     }
 }

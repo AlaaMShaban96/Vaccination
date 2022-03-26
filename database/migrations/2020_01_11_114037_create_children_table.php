@@ -25,7 +25,7 @@ class CreateChildrenTable extends Migration
             $table->bigInteger('telephone_number');
             $table->boolean('status')->default(1);
             $table->timestamps();
-            
+
             $table->foreign('user_id')
             ->references('id')
             ->on('users')

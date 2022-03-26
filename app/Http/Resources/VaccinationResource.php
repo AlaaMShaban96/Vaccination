@@ -14,10 +14,10 @@ class VaccinationResource extends JsonResource
      */
     public function toArray($request)
     {
-        
-       
+
+
         return $this->resource->map(function ($vaccination) {
-         
+
         return [
             "id"=> $vaccination->id,
             "name"=> $vaccination->name,

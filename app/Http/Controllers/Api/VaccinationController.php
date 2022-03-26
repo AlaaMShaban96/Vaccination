@@ -30,7 +30,7 @@ class VaccinationController extends Controller
 
 
 
-    
+
 
     /**
      * Display the specified resource.
@@ -40,11 +40,11 @@ class VaccinationController extends Controller
      */
     public function show($id)
     {
-        
-    }
- 
-  
 
-  
+    }
+
+
+
+
 
 }

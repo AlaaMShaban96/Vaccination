@@ -5,26 +5,26 @@
 #fond  {
     /* background: greenyellow; */
     color: whitesmoke;
-  
+
 }
 #notfond {
     /* background: red; */
     color: red;
-   
+
 }
 .fond {
     background: green;
     border-color: green;
     /* color: whitesmoke; */
-  
+
 }
  .notfond{
     /* background: red; */
     /* color: red; */
-   
+
 }
 </style>
-     
+
 @endsection
 @section('body')
 <form  action="/infochild" method="GET" class="form-inline">
@@ -50,7 +50,7 @@
                 <img class="card-img-top " src="{{asset('image/babe.jpg')}}" alt="Card image cap"
                     style="width: 59%;margin-right: 20%;">
                 <div class="card-body">
-            
+
                 <h5> رقم الطفل :<span class="badge badge-info" id="span-id">{{$child->id}}</span></h5>
                 <h5> الاسم :<span class="badge badge-info" id="span-name">{{$child->name}}</span></h5>
                 <h5> السكن :<span class="badge badge-info" id="span-home_adress">{{$child->home_adress }}</span></h5>
@@ -62,8 +62,8 @@
                 </div>
             </div>
             <br>
-            
-           
+
+
         </div>
 
 
@@ -82,27 +82,27 @@
                     </tr>
                     </thead>
                     <tbody>
-                    
+
                         @foreach ($child->childfiles as $childfile)
-                    
+
                         @foreach ($childfile->vaccinations as $item)
 
                             <td>{{$item->name}}</td>
                             <td>{{$item->time->dose_time}}</td>
 
                         @endforeach
-                       
+
                         <td>{{$childfile->user->name }}</td>
                         <td>{{$childfile->created_at->format('d-m-yy') }}</td>
-                            
+
                             </tr>
-                       
+
                         @endforeach
-                    
-                    
+
+
                     </tbody>
                 </table>
-              
+
             </div>
 
             <div class="col" id="onlyVaccinations">
@@ -118,8 +118,8 @@
                         <th scope="col"> </th>
                     </tr>
                     </thead>
-                    <tbody> 
-                    
+                    <tbody>
+
                         @foreach ($onlyVaccinations as $vaccination)
                         {{-- <form action="/accept-order/{{$vaccination->id}}" method="post">
                         @csrf --}}
@@ -128,12 +128,12 @@
                             <td id="{{$vaccination->users()->where('user_id',auth()->user()->id)->get() =="[]"? "notfond":'fond' }}">{{$vaccination->name}}</td>
                             <td>{{$vaccination->time->dose_time}}</td>
                             {{-- <td> <span id="">.</span></td> --}}
-                            <td id="take-{{$vaccination->id}}"><input type="submit" class="btn btn-danger {{$vaccination->users()->where('user_id',auth()->user()->id)->get() =="[]"? "notfond":'fond' }}" value="اخذ الجرعة" onclick="take_a_dose({{$vaccination->id}})"/></td>                            
+                            <td id="take-{{$vaccination->id}}"><input type="submit" class="btn btn-danger {{$vaccination->users()->where('user_id',auth()->user()->id)->get() =="[]"? "notfond":'fond' }}" value="اخذ الجرعة" onclick="take_a_dose({{$vaccination->id}})"/></td>
                             </tr>
                         {{-- </form> --}}
                         @endforeach
-                    
-                    
+
+
                     </tbody>
                 </table>
                 {{-- {{$onlyVaccinations->links()}} --}}

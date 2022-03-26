@@ -15,7 +15,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-   
+
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -35,7 +35,7 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-   
+
     /**
      * Create a new controller instance.
      *
@@ -47,7 +47,7 @@ class LoginController extends Controller
     }
     public function login(Request $request)
     {
-     
+
         $loginData = $request->validate([
             'email' => 'email|required',
             'password' => 'required'
@@ -62,19 +62,19 @@ class LoginController extends Controller
         }else {
             // dd(auth('admin')->user()->name);
                 if($user->status == 2) {
-                
+
                     return redirect()->back()->withErrors(['المركز خارج الخدمة مؤقتا']);
                 }
                 switch (auth()->user()->account_type) {
-                    
+
                     case 1:
 
                         return redirect('/admin/index');
                         break;
                     case 2:
-                        
+
                          return redirect('/user/index');
-                        break;    
+                        break;
                 }
             }
     }
@@ -83,8 +83,8 @@ class LoginController extends Controller
         if (auth()->check()) {
 
             return redirect('login')->with(Auth::logout());
-            
+
         }
     }
-    
+
 }
