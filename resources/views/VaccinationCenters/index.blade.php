@@ -16,7 +16,7 @@
 				</div>
 
 				<div class="dbox__action">
-                <a href="{{url('/receive')}}" class="dbox__action__btn">عرض</a >
+                <a href="{{url('/orders')}}" class="dbox__action__btn">عرض</a >
 				</div>
 			</div>
 		</div>

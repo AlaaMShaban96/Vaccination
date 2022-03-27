@@ -7,7 +7,7 @@
 
       <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
        <div class="card-header">
-         <h4> المراكز الصحية <a href="{{url('/users')}}" class="badge badge-danger" id="notification-child">{{$users->count()}}</a></h4>
+         <h4> المراكز الصحية <a href="{{url('admin/users')}}" class="badge badge-danger" id="notification-child">{{$users->count()}}</a></h4>
        </div>
 
       </div>
@@ -18,7 +18,7 @@
       <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
       <div class="card-header">
         <h4>
-           طلبات الجرعات  <a href="{{url('admin/requsts')}}" class="badge badge-danger">{{$orders->count()}}</a>
+           طلبات الجرعات  <a href="{{url('admin/requests')}}" class="badge badge-danger">{{$orders->count()}}</a>
         </h4>
       </div>
       </div>

@@ -13,12 +13,12 @@
         <th scope="col"> تاريخ الارسال</th>
         <th scope="col"> تاريخ الاستلام </th>
         <th scope="col">  حالة الطلب </th>
-       
+
       </tr>
     </thead>
     <tbody>
-        
-          
+
+
           @foreach ($orders  as $order)
           <tr>
                 <th>{{$order->id}}</th>
@@ -26,15 +26,15 @@
                 <td>{{$order->vaccination->time->dose_time}}</td>
                 <td>{{$order->quantity}}</td>
                 <td>{{$order->response_quantity}}</td>
-                <td>{{$order->created_at->format('d-m-yy')}}</td>
-                <td>{{$order->updated_at->format('d-m-yy')}}</td>
+                <td>{{$order->created_at->format('d-m-Y')}}</td>
+                <td>{{$order->updated_at->format('d-m-Y')}}</td>
                 <td>{{$order->status ==3 ? 'تم الاستلام' : 'قيد الانتظار..'}}</td>
             </tr>
-              
-          @endforeach
-          
 
-        
+          @endforeach
+
+
+
     </tbody>
   </table>
   {{$orders->links()}}

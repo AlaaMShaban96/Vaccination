@@ -1504,10 +1504,10 @@ font-family:'Tajawal'; font-size: 20px; }
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand"> <a href={{ url('/admin/index') }}><i class="fas fa-home"></i>   الرئيسية</a> </li>
-                <li> <a href={{ url('/users') }}><i class="far fa-user-circle"></i>   الحسابات</a></li>
-                <li> <a href={{ url('/Vaccinations') }}><i class="fas fa-syringe"></i>   التطعيمات</a> </li>
-                <li> <a href={{ url('/cities') }}><i class="fas fa-map-marker-alt"></i>   المدن</a> </li>
-                <li> <a href={{ url('/requests') }}>
+                <li> <a href={{ url('admin/users') }}><i class="far fa-user-circle"></i>   الحسابات</a></li>
+                <li> <a href={{ url('admin/vaccinations') }}><i class="fas fa-syringe"></i>   التطعيمات</a> </li>
+                <li> <a href={{ url('admin/cities') }}><i class="fas fa-map-marker-alt"></i>   المدن</a> </li>
+                <li> <a href={{ url('admin/requests') }}>
                     <i class="far fa-bell"></i>   طلبات الجرعات</a> </li>
                 {{-- <li> <a href={{ url('/reports') }}><i class="fas fa-chart-pie"></i>   الإحصائيات</a> </li> --}}
                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">

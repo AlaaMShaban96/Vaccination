@@ -100,14 +100,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/index','AdminController@index');
 
 
-        Route::get('/users','UserController@index');
+        Route::get('/admin/users','UserController@index');
         Route::post('/add-user','UserController@store');
         Route::post('/update-user/{id}','UserController@updateAdmin');
         Route::post('/disactive-user/{id}','UserController@destroy');
         Route::post('/active-user/{id}','UserController@active');
 
 
-        Route::get('/Vaccinations', 'VaccinationController@index');
+        Route::get('/admin/vaccinations', 'VaccinationController@index');
 
         Route::post('/add-vaccinations','VaccinationController@store');
 
@@ -115,14 +115,14 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-        Route::get('/cities','CityController@index');
+        Route::get('/admin/cities','CityController@index');
 
         Route::post('/add-city','CityController@store');
 
         Route::post('/update-city/{id}','CityController@update');
 
 
-        Route::get('/requests','OrderController@index');
+        Route::get('/admin/requests','OrderController@index');
     Route::post('/accept_order/{id}','OrderController@accept');
     Route::post('/send_order','OrderController@send');
 
