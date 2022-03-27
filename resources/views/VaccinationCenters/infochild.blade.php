@@ -36,7 +36,7 @@
       </div>
   </form>
 
-@if (!empty($child))
+@if (!isset($child))
   <img src="image/errors/noData.jpg" width="50%" style="margin-right: 22%;">
 
 @else
