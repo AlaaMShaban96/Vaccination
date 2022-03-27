@@ -22,7 +22,7 @@ class ChildController extends Controller
             'telephone_number' => 'required|integer|not_in:0|numeric|digits:9'
 
         ]);
-        $valsidatedData['user_id']=auth()->user()->id;
+        $validatedData['user_id']=auth()->user()->id;
         $child = Child::firstOrCreate($validatedData);
         return response()->json($child, 200);
 
